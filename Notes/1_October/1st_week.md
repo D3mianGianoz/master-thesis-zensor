@@ -1,3 +1,5 @@
+# 1st week
+
 ## Day 0: 2nd of October
 
 Yves created a new account: 
@@ -7,7 +9,7 @@ Yves created a new account:
 It looks like a good beginning!
 - notion, dropbox, grafana
 
-## Day 1: 5th October: On boarding
+## Day 1: 5th October ~ On boarding
 
 See notion -> for more details 
 Ianthe and Maxime (senior data analyst) introduced me to the current workflow of zensors.
