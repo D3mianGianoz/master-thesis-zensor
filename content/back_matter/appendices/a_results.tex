@@ -1,0 +1,43 @@
+\chapter{Sintesi dei risultati}
+
+\begin{table}[h]
+    \begin{threeparttable}
+        \tiny
+        \centering
+
+        \begin{tabularx}{\textwidth}{|c|X|X|X|X|X|c|c|c|}
+            \hline
+            \textbf{Num.} & \textbf{Archit.} & \textbf{Pre-addestr.} & \textbf{Epoche}          & \textbf{Ottim.}       & \textbf{Param.}                                      & \textbf{Augment.}      & \textbf{mAP}                  & \textbf{mAP@50}               \\
+            \hline
+            1    & EffDet     & COCO         & \num{100000}    & Cosine decay & lr: \num{2e-3}, lrwu: \num{1e-4}, ewu: \num{1000}   & a             & \SI{70.90}{\percent} & \SI{85.82}{\percent} \\
+            \hline
+            2    & FRCNN      & COCO         & \num{75000}     & Cosine decay & lr: \num{1e-3}, lrwu: \num{1.3e-4}, ewu: \num{750}  & a             & \SI{86.00}{\percent} & \SI{98.12}{\percent} \\
+            \hline
+            3   & sYOLOv4     & COCO         & \num{300}       & Cosine decay & lr: \num{1e-5}, lrwu: \num{1e-6}, ewu: \num{10}     & ---           & \SI{60.23}{\percent} & \SI{92.70}{\percent} \\
+            \hline
+            4   & FRCNN       & COCO         & \num{50000}     & Cosine decay & lr: \num{1e-3}, lrwu: \num{1.3e-4}, ewu: \num{750}  & ---           & \SI{82.93}{\percent} & \SI{98.02}{\percent} \\
+            \hline
+            4   & FRCNN       & COCO         & \num{50000}     & Cosine decay & lr: \num{1e-3}, lrwu: \num{1.3e-4}, ewu: \num{750}  & a,b,c,d,e,f,g & \SI{87.01}{\percent} & \SI{98.97}{\percent} \\
+            \hline
+        \end{tabularx}
+    
+        \begin{tablenotes}[online]
+            \item [EffDet] EfficientDet D1
+            \item [FRCNN] Faster R-CNN
+            \item [sYOLOv4] scaled-YOLOv4 P5
+            \item [lr] Learning rate
+            \item [lrwu] Learning rate in fase di warm-up
+            \item [ewu] Epoche di warm-up
+            \item [a] Ridimensionamento casuale con padding
+            \item [b] Capovolgimento orizzontale casuale
+            \item [c] Capovolgimento verticale casuale
+            \item [d] Modifica casuale alla luminosità
+            \item [e] Modifica casuale al contrasto
+            \item [f] Normalizzazione
+            \item [g] Introduzione di riquadri di jitter
+        \end{tablenotes}
+
+        \caption{Tabella di sintesi degli addestramenti svolti.}
+        \label{tab:appendix_results}
+    \end{threeparttable}
+\end{table}

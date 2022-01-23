@@ -1,0 +1,40 @@
+\documentclass[a4paper, 11pt, twoside, openright]{report}
+% Package imports
+\input{imports.tex}
+
+\selectlanguage{english}
+
+% Document details
+\title{Thesis Draft}
+\author{Damiano Gianotti}
+\date{November 2021}
+
+% acro package configuration and acronym definitions
+% \input{acro.tex}
+
+% Auxiliary commands and miscellaneous definitions
+\input{commands.tex}
+
+% Bibliography file definition
+\addbibresource{./content/back_matter/bibliography/bibliography.bib}
+
+\begin{document}
+    % Front Matter
+    \pagenumbering{roman}
+    \input{./content/front_matter/frontispiece.tex}
+    \input{./content/front_matter/declaration_of_originality.tex}
+    \input{./content/front_matter/abstract.tex}
+    \tableofcontents
+    \cleardoublepage
+    \pagenumbering{arabic}
+    
+    % Main Matter
+    \input{./content/chapter_1/main.tex}
+    \input{./content/chapter_2/main.tex}
+    \input{./content/chapter_3/main.tex}
+    \input{./content/chapter_4/main.tex}
+    
+    % Back Matter
+    \input{./content/back_matter/appendices/main.tex}
+    \printbibliography[heading=bibintoc]
+\end{document}
