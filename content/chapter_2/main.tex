@@ -1,4 +1,4 @@
-\chapter{Background}
+\chapter{The hosting company: Zensor}
 
 \section{Why Zensor exist?}
 \input{./content/chapter_2/zensor.tex}
@@ -6,34 +6,5 @@
 \section{Zensor Approach}
 \input{./content/chapter_2/approach.tex}
 
-\section{Stack/Pipeline in a nutshell}
-
-
-% \section{Introduction to Analysis}
-% To make dashboards happen, we are using Grafana. 
-% One Grafana environment allows for multiple so-called "organizations". 
-% Every project, thus, has one "organization" which is visible to the client (usually named after client) 
-% and another one (usually named Zensor) that is used for internal purposes.
-
-% \subsection{Loading speed of Grafana dashboards}
-
-% \texttt{And how to keep it fast}
-
-% Loading speed of a Grafana dashboard depends on 5 major things:
-
-% \begin{enumerate}
-%     \item  pre-selected and saved time window: the larger the time period you query, the longer it takes to open and display the contents'
-%     \item  data frequency in the panels - in case of the very high frequency, non aggregated data, even if selected time period is minutes, it will take time to load
-%     \item  number of panels with the data inside
-%     \item  your database structure
-%     \item  whether calculations have to happen inside the panel before the data is displayed
-% \end{enumerate}
-
-% \subsection{Operational statistics' dashboards}
-% To make sure statistics page loads fast enough:
-
-% \begin{itemize}
-%     \item Take all calculations out of Grafana and only display measurement contents. Zensor Library module is available to calculate statistics on different data streams and different frequencies.
-%     \item Along with the point above, make sure \textit{'time'} in the query is set to a dynamic interval and not grouped on, e.g. \textit{'1d'}
-%     \item Use 'rows' to group panels together by topic and close the ones that don't have to be displayed immediately on dashboard load (and save it like that).
-% \end{itemize}
+\section{Workflow}
+\input{./content/chapter_2/workflow.tex}

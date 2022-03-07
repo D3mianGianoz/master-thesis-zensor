@@ -2,15 +2,13 @@
 % Package imports
 \input{imports.tex}
 
-\selectlanguage{english}
-
 % Document details
 \title{Thesis Draft}
 \author{Damiano Gianotti}
-\date{November 2021}
+\date{February 2021}
 
 % acro package configuration and acronym definitions
-% \input{acro.tex}
+\input{acro.tex}
 
 % Auxiliary commands and miscellaneous definitions
 \input{commands.tex}
@@ -19,22 +17,24 @@
 \addbibresource{./content/back_matter/bibliography/bibliography.bib}
 
 \begin{document}
+    \selectlanguage{english}
     % Front Matter
     \pagenumbering{roman}
-    \input{./content/front_matter/frontispiece.tex}
-    \input{./content/front_matter/declaration_of_originality.tex}
-    \input{./content/front_matter/abstract.tex}
+    % \input{./content/front_matter/frontispiece.tex}
+    % \input{./content/front_matter/declaration_of_originality.tex}
+    % \input{./content/front_matter/abstract.tex}
     \tableofcontents
-    \cleardoublepage
+    \cleardoublepage{}
     \pagenumbering{arabic}
     
     % Main Matter
     \input{./content/chapter_1/main.tex}
     \input{./content/chapter_2/main.tex}
     \input{./content/chapter_3/main.tex}
-    \input{./content/chapter_4/main.tex}
+    % \input{./content/chapter_4/main.tex}
     
     % Back Matter
-    \input{./content/back_matter/appendices/main.tex}
+    % \input{./content/back_matter/appendices/main.tex}
+    % \printacronyms[heading=section]
     \printbibliography[heading=bibintoc]
 \end{document}
