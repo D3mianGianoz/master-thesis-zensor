@@ -1,4 +1,6 @@
-\paragraph{Time Series} In mathematics, a time series is a series of data points which are indexed (or listed or graphed) in time order (see~\ref{fig:random time-series}). More generally, a time series is a sequence taken at evenly spaced intervals over a period of time. As a result, it's a succession of discrete-time data. Ocean tidal heights, sunspot counts, and the Dow Jones Industrial Average's daily closing value are all examples of time series.
+\section{InfluxDB}
+
+\paragraph{Time Series} In mathematics, a time series is a series of data points which are indexed (or listed or graphed) in time order (see~\ref{fig:random time-series}). More generally, a time series is a sequence taken at evenly spaced intervals over a period of time. As a result, it's a \todo{EB: verificare ``succession''} succession of discrete-time data. Ocean tidal heights, sunspot counts, and the Dow Jones Industrial Average's daily closing value are all examples of time series.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\linewidth]{content/chapter_3/images/random-data-plus-trend-r2.png}
@@ -15,11 +17,11 @@ Timescale, popular \ac{tsdb}, CEO \textit{Ajay Kulkarni}~\cite{Misc:asay_why_tim
     
     So here's how I like to define time-series data: data that collectively represents how a system/process/behaviour changes over time.
 \end{quote}
-Although it is possible to store time-series data in many diverse database types, the design of these systems with \textbf{time} as a \textbf{key} index is distinctly different from relational databases, which reduce discrete relationships through referential models.
+Although it is possible to store time-series data in many diverse database types, the design of these systems with \textbf{time} as a \textbf{key} index is distinctly different from relational databases, which reduces discrete relationships through referential models.
 In many cases, the repositories of time-series data will utilize compression algorithms to manage the data efficiently~\cite{Book:devops_cookbook}. Furthermore, time series databases can also be configured to regularly delete old data, unlike traditional databases which are designed to store data indefinitely.
 
 \subsection{Influx solution}
-InfluxDB is an open-source time series database \acs{tsdb} created by the InfluxData organization~\cite{Misc:influxdata_website}. It is written in the Go programming language and is used for time series data storage and retrieval in various sectors such as operations monitoring, application metrics, Internet of Things, and, especially important in our context, sensor data and real-time analytics. It also supports the processing of data from Graphite, a data logging and graphing tool for time series data.
+InfluxDB is an open-source time series database \acs{tsdb} created by the InfluxData organization~\cite{Misc:influxdata_website}. It is written in the Go programming language and is used for time series data storage and retrieval in various sectors such as operations monitoring, application metrics, Internet of Things, and, especially important in our context, sensor data and real-time analytics. It also supports the processing of data from Graphite, a data logging and graphing tool for time series data. \todo{EB: ci vorrebbe forse una reference a Graphite}
 \todo{Quest'ultima frase non è così rilevante}
 
 \paragraph{Core Features}
@@ -40,13 +42,12 @@ InfluxDB has no external dependencies and provides a SQL-like vocabulary with bu
     \end{tabular}
     \caption{Sample time series dataset: number of butterflies and honeybees counted by two scientists}\label{tab:influx_example}
 \end{table}
-Each point is made up of a fieldset and a timestamp, which are key-value pairs. These form a series when they are grouped together by a set of key-value pairs known as a tagset. Finally, a measurement is created by grouping series together using a string identification.
-64-bit integers, 64-bit floating points, strings, and booleans are among the possible values as shown in the table above [\ref{tab:influx_example}]. The time and tagset are used to sort the points.
+Each point is made up of a fieldset and a timestamp, which are key-value pairs. These pairs form a series when they are grouped together by a set of key-value pairs known as a tagset. Finally, a measurement is created by grouping series together using a string identification.
+64-bit integers, 64-bit floating points, strings, and booleans are among the possible values as shown in Table~\ref{tab:influx_example}. The time and tagset are used to sort the points.
 As a side note it is important to know that data is downsampled and removed according to retention policies, which are set by measurement and that \textit{Continuous Queries} are executed on a regular basis and the results are stored in a goal measurement.
 
 \paragraph{Design Tradesoff}
-InfluxDB is a time series database and optimizing for this use case involves a number of trade-offs, primarily to increase performance at the cost of functionality~\cite{Misc:influx_docs}. Here is a list of three design ideas that lead to compromises that I personally experienced during my experience:
-
+InfluxDB is a time series database and \todo{EB: controllare ``optimizing''. Forse ``optimized''?} optimizing for this use case involves a number of trade-offs, primarily to increase performance at the cost of functionality~\cite{Misc:influx_docs}. Below, it is reported a list of three design ideas that lead to compromises that I personally experienced during my experience:
 \begin{enumerate}
     \item Deletes are a rare occurrence. When they do occur, it is almost always against large ranges of old data that are cold for writes.
     \item Updates to existing data are a rare occurrence, and contentious updates never happen. Time series data is predominantly new data that is never updated.
@@ -78,7 +79,7 @@ InfluxDB is a time series database and optimizing for this use case involves a n
 \end{table}
 
 \paragraph{Conclusion}
-It is therefore no surprise to conclude that, when compared to a general purpose relational database like SQL Server, InfluxDB, using default single node configuration, outperformed both write speed, disk storage usage (by a factor of 27x) and query execution time, where InfluxDB is up to 20x faster with an average of 8x faster~\cite{Misc:noor_2017_universit}.
+It is therefore not surprising to conclude that, when compared to a general purpose relational database like SQL Server, InfluxDB, using default single node configuration, outperformed both write speed, disk storage usage (by a factor of 27x) and query execution time, where InfluxDB is up to 20x faster with an average of 8x faster~\cite{Misc:noor_2017_universit}.
 It can be seen that InfluxDB, tailored-made for Time Series data, is released after the other competitive technologies (like Graphite, TimescaleDB, Prometeus) and yet still among the top list. \url{https://db-engines.com/en/ranking_trend/time+series+dbms}
 \todo{Non so se valga la pena citarlo}
 The InfluxQL, SQL-like query language, helps make it easier to use and adapt for people who are used to working with relational databases such as MySQL, even though influx
