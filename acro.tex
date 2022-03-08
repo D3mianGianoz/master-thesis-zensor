@@ -1,10 +1,44 @@
-% \acsetup{
-%     format/first-long   =   \emph,
-%     format/replace      =   true,
-%     single              =   true,
-%     single-style        =   long
-% }
+\acsetup{
+    make-links,
+    pages / display     =   first,
+    pages / fill        =   {, },
+    format / first-long =   \emph,
+    format / replace    =   true
+    % single              =   true,
+    % single-style        =   long
+}
 
+% Chapter 1
+\DeclareAcronym{cmms}{
+    short   =   {CMMS},
+    long    =   {Computerized Maintenance Management Systems}
+}
+\DeclareAcronym{ppm}{
+    short   =   {PPM},
+    long    =   {Planned preventive maintenance}
+}
+\DeclareAcronym{cbm}{
+    short   =   {CBM},
+    long    =   {Condition-based maintenance}
+}
+\DeclareAcronym{cm}{
+    short   =   {CM},
+    long    =   {Condition monitoring}
+}
+\DeclareAcronym{mro}{
+    short   =   {MRO},
+    long    =   {Maintenance, repair and overhaul}
+}
+\DeclareAcronym{AI}{
+    short   =   {AI},
+    long    =   {Artificial Intelligence}
+}
+\DeclareAcronym{IoT}{
+    short   =   {IoT},
+    long    =   {Internet Of Things}
+}
+
+% Chapter 3
 \DeclareAcronym{crud}{
     short   =   {CRUD},
     long    =   {Create Read Update Delete}
@@ -13,14 +47,8 @@
     short   =   {TSDB},
     long    =   {Time Series Database}
 }
-\DeclareAcronym{relu}{
-    short   =   {ReLU},
-    long    =   {Rectified Linear Unit}
-}
-\DeclareAcronym{svm}{
-    short   =   {SVM},
-    long    =   {Support Vector Machine}
-}
+
+%% Examples
 \DeclareAcronym{gps}{
     short   =   {GPS},
     long    =   {Global Positioning System}
@@ -28,14 +56,6 @@
 \DeclareAcronym{api}{
     short   =   {API},
     long    =   {Application Programming Interface}
-}
-\DeclareAcronym{ap}{
-    short   =   {AP},
-    long    =   {Average Precision}
-}
-\DeclareAcronym{AI}{
-    short   =   {AI},
-    long    =   {Artficial Intelligence}
 }
 \DeclareAcronym{ML}{
     short   =   {ML},

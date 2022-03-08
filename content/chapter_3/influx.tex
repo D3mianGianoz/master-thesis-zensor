@@ -6,20 +6,20 @@
     \label{fig:random time-series}
 \end{figure}
 \subsection{TSDB: time series database}
-It follows that a time series database (TSDB) is a software system that is designed to store and serve this peculiar type of data, time series, using time(s) and value(s) pairs(s).
-Timescale (popular \ac{tsdb}) CEO \textit{Ajay Kulkarni}~\cite{Misc:asay_why_time_series} put it:
+It follows that a time series database \acs{tsdb} is a software system that is designed to store and serve this peculiar type of data, time series, using time(s) and value(s) pairs(s).
+Timescale, popular \ac{tsdb}, CEO \textit{Ajay Kulkarni}~\cite{Misc:asay_why_time_series} put it:
 \begin{quote}
-    [T]ime-series datasets track changes to the overall system as INSERTs, not UPDATEs.
+    Time-series datasets track changes to the overall system as INSERTs, not UPDATEs.
 
     This practice of recording each and every change to the system as a new, different row is what makes time-series data so powerful. It allows us to measure change: analyse how something changed in the past, monitor how something is changing in the present, predict how it may change in the future.
-
-        [So] here's how I like to define time-series data: data that collectively represents how a system/process/behaviour changes over time.
+    
+    So here's how I like to define time-series data: data that collectively represents how a system/process/behaviour changes over time.
 \end{quote}
 Although it is possible to store time-series data in many diverse database types, the design of these systems with \textbf{time} as a \textbf{key} index is distinctly different from relational databases, which reduce discrete relationships through referential models.
 In many cases, the repositories of time-series data will utilize compression algorithms to manage the data efficiently~\cite{Book:devops_cookbook}. Furthermore, time series databases can also be configured to regularly delete old data, unlike traditional databases which are designed to store data indefinitely.
 
 \subsection{Influx solution}
-InfluxDB is an open-source time series database \textit{(TSDB)} created by the InfluxData organization~\cite{Misc:influxdata_website}. It is written in the Go programming language and is used for time series data storage and retrieval in various sectors such as operations monitoring, application metrics, Internet of Things, and, especially important in our context, sensor data and real-time analytics. It also supports the processing of data from Graphite, a data logging and graphing tool for time series data.
+InfluxDB is an open-source time series database \acs{tsdb} created by the InfluxData organization~\cite{Misc:influxdata_website}. It is written in the Go programming language and is used for time series data storage and retrieval in various sectors such as operations monitoring, application metrics, Internet of Things, and, especially important in our context, sensor data and real-time analytics. It also supports the processing of data from Graphite, a data logging and graphing tool for time series data.
 \todo{Quest'ultima frase non è così rilevante}
 
 \paragraph{Core Features}
@@ -63,13 +63,13 @@ InfluxDB is a time series database and optimizing for this use case involves a n
         \hfil\bfseries Cons
         \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
 
-        %% PROS, seperated by empty line or \par
+        %% PROS, separated by empty line or \par
         Restricting access to deletes and updates allows for increased query and write performance\par
         InfluxDB is good at managing discontinuous data\par
 
          &
 
-        %% CONS, seperated by empty line or \par
+        %% CONS, separated by empty line or \par
         Delete and Update functionality is significantly restricted, since influxDB is not \acs{crud} \par
         Schema-less design means that some database functions are not supported e.g. there are no cross table joins\par
         \\\bottomrule
@@ -81,4 +81,5 @@ InfluxDB is a time series database and optimizing for this use case involves a n
 It is therefore no surprise to conclude that, when compared to a general purpose relational database like SQL Server, InfluxDB, using default single node configuration, outperformed both write speed, disk storage usage (by a factor of 27x) and query execution time, where InfluxDB is up to 20x faster with an average of 8x faster~\cite{Misc:noor_2017_universit}.
 It can be seen that InfluxDB, tailored-made for Time Series data, is released after the other competitive technologies (like Graphite, TimescaleDB, Prometeus) and yet still among the top list. \url{https://db-engines.com/en/ranking_trend/time+series+dbms}
 \todo{Non so se valga la pena citarlo}
-The SQL-like query language helps it make easier to use and adapt by people who are use to working with relational databases like MySQL.
+The InfluxQL, SQL-like query language, helps make it easier to use and adapt for people who are used to working with relational databases such as MySQL, even though influx
+implementation is a smaller subset, not fully supporting \ac{crud} operations.
