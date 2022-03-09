@@ -8,39 +8,37 @@ Pandas is primarily used to analyse data. It supports data import from a variety
 Furthermore, Pandas supports a variety of data manipulation operations such as merging, reshaping, and selecting, as well as data cleaning and handling.
 To accomplish these goals, Pandas defines and makes use of two important software \textit{Classes}, Series and DataFrame, which we will now briefly introduce.
 \begin{figure}[ht]
-  \centering
-  \includegraphics[width=\linewidth]{content/chapter_3/images/datastructure.pdf}
-  \caption{Pandas Data structure}
-  \label{fig:pandas_dataframe}
+    \centering
+    \includegraphics[width=\linewidth]{content/chapter_3/images/datastructure.pdf}
+    \caption{Pandas Data structure}
+    \label{fig:pandas_dataframe}
 \end{figure}
 
-\paragraph{Series} is a one-dimensional labeled array capable of holding any data type (integers, strings, floating point numbers, Python objects, etc.). The axis labels are collectively referred to as the \textit{index}.
+\paragraph{Series} is a one-dimensional labeled array capable of holding any data type (integers, strings, floating point numbers, Python objects, etc.). 
+The axis labels are collectively referred to as the \textit{index}.
 
-\paragraph{DataFrame} is a 2-dimensional labeled data structure with columns of potentially different types; in some ways it is
-% like
-similar to
+\paragraph{DataFrame} is a 2-dimensional labeled data structure with columns of potentially different types; in some ways it is similar to
 % EB: attenzione "it's like" e` informale
 a spreadsheet or an SQL table (see Figure~\ref{fig:pandas_dataframe}) in which each individual column is a \textit{Series}.
-It is generally the most commonly used pandas object, since it accepts many different kinds of input \todo{EB: controllare Inglese next ``at makes him''?? Chi?? Se \`e Pandas ``it'' non ``him''} at makes him very flexible~\cite{reback_pandas-dev/pandas:_2022}.
-Along with the data,
-% one
-users
-%
-can optionally pass index (row labels) and columns (column labels) arguments. By doing so, \todo{EB: ``guaranteeing the index'' non suona bene} you are guaranteeing the index and/or columns of the resulting DataFrame.
+It is, generally, the most commonly used pandas object, since it accepts many different kinds of input, which makes it very flexible~\cite{reback_pandas-dev/pandas:_2022}.
+% \todo{EB: controllare Inglese next ``at makes him''?? Chi?? Se \`e Pandas ``it'' non ``him''}
+Along with the data, user
+% one 
+can optionally pass index (row labels) and columns (column labels) arguments. By doing so, the user guarantees the index and/or columns of the resulting DataFrame.
+% DG: ho riformulato specificando il soggetto:
+% alternativamente to secure\ to ensure per \todo{EB: ``guaranteeing the index'' non suona bene}
 If axis labels are not passed, they will be constructed from the input data based on common sense rules.
-And this is just one way of building a dataframe, a foretaste of the flexibility of this library.
-\todo{EB: non so se esista ``foretaste''. Io conosco ``appetizer'' in contesti simili, ma vedi tu}
+And this is just one way of building a Dataframe, an appetizer of the flexibility of this library.
+% \todo{EB: non so se esista ``foretaste''. Io conosco ``appetizer'' in contesti simili, ma vedi tu}
 
 \subsection{Core Features}
-The
+The goal
 % idea
-goal
-%
 of this subsection is to give an outline of how many possible use-cases are covered by this library, and, at the same time, to explore a couple of them that proved to be crucial during my internship experience.
-\todo{EB: ``Let's start'' \`e troppo informale. Meglio qualcosa come ``We are now first  illustrate ...''}
-Let's start with the idea of \textit{grouping}.
+% \todo{EB: ``Let's start'' \`e troppo informale. Meglio qualcosa come ``We are now first  illustrate ...''}
+We are now first illustrate the concept of "grouping". \textit{grouping}.
 
-\paragraph{Groupby}\label{par:groupby}
+\paragraph{Groupby}
 The name \textbf{GroupBy} should be quite familiar to those who have used a SQL-based tool or worked with relation database. This ``engine'' allows split-apply-combine operations on heterogeneous data sets.
 By ``group by'' we are referring to a process involving one or more of the following steps:
 \begin{enumerate}
@@ -71,7 +69,9 @@ In the \textit{apply and combine} step, we might wish to do one of the following
               \item Discard data that belongs to groups with only a few members.
               \item Filter out data based on the group sum or mean.
           \end{itemize}
-    \item Some combination of the above: \textbf{GroupBy} will examine the results of the \textit{apply} step and try to return a \todo{EB: non capisco ``sensibly'' next} sensibly \textit{combined} result if it doesn't fit into either of the above two categories.
+    \item Some combination of the above: \textbf{GroupBy} will examine the results of the \textit{apply} step and try to return a sensibly \textit{combined} result if it doesn't fit into either of the above two categories.
+          \todo{EB: non capisco ``sensibly'' next, DG: ho scritto la traduzione, spero sia più chiaro, se no riformulo}
+    \item Una qualche combinazione delle precedenti: GroupBy esaminerà i risultati del passo apply e cercherà di restituire un risultato sensatamente combinato se non rientra in nessuna delle due categorie precedenti.
 \end{itemize}
 Since the set of object instance methods on pandas data structures are generally rich and expressive, we often simply want to invoke, say, a DataFrame function on each group.
 With this engine you can try multiple different approaches, testing what suits more your needs, even though often it is hard to define this three separate steps for badly shaped data.
@@ -90,9 +90,14 @@ As an example, Pandas supports:
     \caption{Examples of signal waveform data processed by resample}\label{fig:up and down sampling}
 \end{figure}
 Let us now focus on one key aspect of handling/manipulating sensor data, crucial in our context, the necessity of resampling.
-Fortunately, Pandas has, once again, a simple-to-use, powerful, and efficient functionality for performing resampling operations during frequency conversion (e.g., converting \todo{EB: non sono sicuro dell'uso in Inglese di ``secondly'' e ``inutely''. Vedi un po' tu} secondly data into 5-minutely data). This is also extremely common in, but not limited to, financial applications.
+Fortunately, Pandas has, once again, a simple-to-use, powerful, and efficient functionality for performing resampling operations during frequency conversion
+% \todo{EB: non sono sicuro dell'uso in Inglese di ``secondly'' e ``inutely''. Vedi un po' tu}
+% l'ho preso dalla documentazione ufficiale https://pandas.pydata.org/docs/user_guide/timeseries.html#:~:text=(e.g.%2C%20converting%20secondly%20data%20into%205%2Dminutely%20data)
+(e.g., converting secondly data into 5-minutely data). This is also extremely common in, but not limited to, financial applications~\cite{Misc:pandas_docs}.
 
-To keep things simple, we could say that resample is a time-based \textbf{Groupby} followed by a reduction method on each of its groups; as a positive side, this method can be used directly from \textit{DataFrameGroupBy} objects that we discussed in paragraph [\ref{par:groupby}]. \todo{EB: attenzione, i paragrafi non possono essere riferiti. Infatti, la label viene espansa con il numero della sezioine. Considerare se inserire ``il paragrafo XYZ in SectionXYZ''}
+To keep things simple, we could say that resample is a time-based \textbf{Groupby} followed by a reduction method on each of its groups; as a positive side,
+this method can be used directly from \textit{DataFrameGroupBy} objects that we discussed in paragraph \textbf{GroupBy} previously discussed.
+% \todo{EB: attenzione, i paragrafi non possono essere riferiti. Infatti, la label viene espansa con il numero della sezioine. Considerare se inserire ``il paragrafo XYZ in SectionXYZ''}
 The resample function is very flexible and allows you to specify many different parameters to control the frequency conversion and resampling operation, both upsampling and downsampling.
 %%%
 \paragraph{Others functionality}
@@ -106,4 +111,8 @@ Furthermore, other time series features are available, and not only that notably
     \item Insertion and deletion of columns in a data structure.
 \end{itemize}
 \paragraph{Conlcusion}
-Pandas provides a solid foundation upon which a very powerful data analysis ecosystem can be established, especially since the library is performance-optimized, with important code paths implemented in Cython or C. \todo{Cython \`e una roba moderna di voi giovani? Oppure \`e un typo?}
+Pandas provides a solid foundation upon which a very powerful data analysis ecosystem can be established, especially since the library is performance-optimized,
+with important code paths implemented in Cython or C.
+\todo{Cython \`e una roba moderna di voi giovani? Oppure \`e un typo?}
+No è un compilatore statico e ottimistico per poter estendere Python con potenti librerie in C: https://cython.org/
+``Cython gives you the combined power of Python and C''
