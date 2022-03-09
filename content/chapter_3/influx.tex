@@ -13,18 +13,18 @@ Ocean tidal heights, sunspot counts, and the Dow Jones Industrial Average's dail
 It follows that a time series database \acs{tsdb} is a software system that is designed to store and serve this peculiar type of data, time series, using time(s) and value(s) pairs(s).
 Timescale, popular \ac{tsdb}, CEO \textit{Ajay Kulkarni}~\cite{Misc:asay_why_time_series} put it:
 \begin{quote}
-    Time-series datasets track changes to the overall system 
+    Time-series datasets track changes to the overall system
     as INSERTs, not UPDATEs.
     This practice of recording each and every change to the system as a new, different row is what makes time-series data so powerful.
     It allows us to measure change: analyse how something changed in the past, monitor how something is changing in the present, predict how it may change in the future.
-    
+
     So here's how I like to define time-series data: data that collectively represents how a system/process/behaviour changes over time.
 \end{quote}
 Although it is possible to store time-series data in many diverse database types, the design of these systems with \textbf{time} as a \textbf{key} index is distinctly different from relational databases, which reduces discrete relationships through referential models.
 In many cases, the repositories of time-series data will utilize compression algorithms to manage the data efficiently~\cite{Book:devops_cookbook}. Furthermore, time series databases can also be configured to regularly delete old data, unlike traditional databases which are designed to store data indefinitely.
 
 \subsection{Influx solution}
-InfluxDB is an open-source time series database \acs{tsdb} created by the InfluxData organization~\cite{Misc:influxdata_website}. 
+InfluxDB is an open-source time series database \acs{tsdb} created by the InfluxData organization~\cite{Misc:influxdata_website}.
 It is written in the Go programming language and is used for time series data storage and retrieval in various sectors such as operations monitoring, application metrics, \acl{IoT}, and, especially important in our context, sensor data and real-time analytics.
 It also supports the processing of data from Graphite, a data logging and graphing tool for time series data~\cite{Misc:thegraphiteproject_2021_graphite}.
 % \todo{EB: ci vorrebbe forse una reference a Graphite}
@@ -53,7 +53,7 @@ Each point is made up of a fieldset and a timestamp, which are key-value pairs. 
 As a side note it is important to know that data is downsampled and removed according to retention policies, which are set by measurement and that \textit{Continuous Queries} are executed on a regular basis and the results are stored in a goal measurement.
 
 \paragraph{Design Tradesoff}
-InfluxDB is a time series database and, by this aspect, has several limitations; as a matter of fact, 
+InfluxDB is a time series database and, by this aspect, has several limitations; as a matter of fact,
 % In fact Indeed 
 being optimized for this use case involves a number of trade-offs, primarily to increase performance at the cost of functionality~\cite{Misc:influx_docs}.
 Below, it is reported a list of three design ideas that lead to compromises that I personally encountered during my experience:
@@ -67,15 +67,13 @@ Below, it is reported a list of three design ideas that lead to compromises that
     \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
         \toprule
         \hfil\bfseries Pros
-         &
+        &
         \hfil\bfseries Cons
         \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
         %% PROS, separated by empty line or \par
         Restricting access to deletes and updates allows for increased query and write performance\par
         InfluxDB is good at managing discontinuous data\par
-
-         &
-
+        &
         %% CONS, separated by empty line or \par
         Delete and Update functionality is significantly restricted, since influxDB is not \acs{crud} \par
         Schema-less design means that some database functions are not supported e.g. there are no cross table joins\par
@@ -86,7 +84,7 @@ Below, it is reported a list of three design ideas that lead to compromises that
 
 \paragraph{Conclusion}
 It is therefore not surprising to conclude that, when compared to a general purpose relational database like SQL Server, InfluxDB, using default single node configuration, outperformed both write speed, disk storage usage (by a factor of 27x) and query execution time, where InfluxDB is up to 20x faster with an average of 8x faster~\cite{Misc:noor_2017_universit}.
-It can be seen that InfluxDB, tailored-made for Time Series data, is released after other competitive technologies (like Graphite, TimescaleDB, Prometeus) and yet still 1st among the popularity tier list \href{https://db-engines.com/en/ranking_trend/time+series+dbms}{as shown here}. 
+It can be seen that InfluxDB, tailored-made for Time Series data, is released after other competitive technologies (like Graphite, TimescaleDB, Prometeus) and yet still 1st among the popularity tier list \href{https://db-engines.com/en/ranking_trend/time+series+dbms}{as shown here}.
 % \todo{DG: Non so se valga la pena citarlo, lo prendo per un si?}
 The InfluxQL, SQL-subset query language, helps make it easier to use and adapt for people who are used to working with relational databases such as MySQL, even though influx
 implementation is a smaller subgroup, not fully supporting \ac{crud} operations. For more complex queries is almost mandatory using Flux, a functional-like query language developed in-house by Influx~\cite{Misc:influx_docs}.
