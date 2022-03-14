@@ -1,17 +1,24 @@
-\label{section:grafana}
+\section{Grafana}
+Grafana is a web-based analytics and interactive visualization application that runs on a variety of platforms.
+When connected to supported data sources, it produces web-based charts, graphs, and alerts.
+Grafana Enterprise, a paid version with more features, is available as a self-hosted installation or as a Grafana Labs cloud service account~\cite{Misc:grafana_labs_website}.
+Grafana is split into two parts: a front end and a back end, both of which are built in TypeScript and Go. 
+Because the project is open source and has a large existing community, it can be expanded through a plug-in system, adding specific customizations to the existing platform~\cite{Misc:grafana_docs}.
+% \todo{EB: non capisco le virgole di seguito. ``system''? DG: ora dovrebbe essere più chiaro}
+Using interactive query builders, end users can develop complicated monitoring dashboards.
+
+But what is a dashboard anyway?
+
+\subsection{Dashboard: what is it?}
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\textwidth]{content/chapter_3/images/grafana_dashboard.png}
-    \caption{Grafana Graph Visualization (Source: Flickr~\cite{file:screenshots_grafana})}
-    \label{fig:grafana_dashboard}
+    \includegraphics[width=\linewidth]{content/chapter_3/images/uk_dashboard_covid.png}
+    \caption{Official data and insights on coronavirus (Source: \href{https://coronavirus.data.gov.uk/)}{gov.uk}) }
+    \label{fig:corona_uk_dashboard}
+\label{section:grafana}
 \end{figure}
-Grafana is a web-based analytics and interactive visualization application that runs on a variety of platforms. When connected to supported data sources, it produces web-based charts, graphs, and alerts. Grafana Enterprise, a paid version with more features, is available as a self-hosted installation or as a Grafana Labs cloud service account~\cite{Misc:grafana_labs_website}.
-Grafana is split into two parts: a front end and a back end, both of which are built in TypeScript and Go and, through a plug-in, system, it can be expanded, adding specific customizations to the existing platform~\cite{Misc:grafana_docs}.
-Using interactive query builders, end users can develop complicated monitoring dashboards. But what is a dashboard anyway?
-
-\subsection{Dashboard what is it?}
 A dashboard, in business, is a type of graphical user interface that often enables quick access to key performance indicators (KPIs) related to a certain goal or business activity.
-In our context, ''dashboard'' refers to a ''progress report'' or ''report'' and, as a type of data visualization, it is mostly accessible by a web browser and is usually linked to regularly updating data sources.
+In our context, ``dashboard'' refers to a ``progress report'' or ``report'' and, as a type of data visualization, it is mostly accessible by a web browser and is usually linked to regularly updating data sources.
 The term dashboard is derived from the automotive dashboard, where drivers may monitor the primary functions at a glance using the instrument panel.
 
 The success of dashboard projects depends on the relevancy/importance of information provided within the dashboard. This includes the metrics chosen to monitor and the timeliness of the data forming those metrics; data must be up-to-date and accurate.
@@ -23,7 +30,15 @@ Based on multiple specified indices and several time frames, the dashboard visua
 The collecting data, which is presented in a variety of diagrams and graphs, allows the institutions to obtain insights, discover patterns and preferences, and understand the overall impact of these free materials on the global audience of Wikimedia-project users.
 
 \subsection{Key strengths}
-Now that we are familiar with the ''dashboard'' concept, we can highlight why we should use Grafana; here are some of the key features~\cite{Article:comprehensive_study_grafana}:
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{content/chapter_3/images/grafana_dashboard.png}
+    \caption{Grafana Graph Visualization (Source: Flickr~\cite{file:screenshots_grafana})}
+    \label{fig:grafana_dashboard}
+\end{figure}
+% \todo{EB: io metterei da qualche parte un altro screenshot di questo Grafana. Ma vedi te}
+Now that we are familiar with the ``dashboard'' concept, we can highlight why we should use Grafana solution~\ref{fig:grafana_dashboard};
+here are some of the key features~\cite{Article:comprehensive_study_grafana}:
 \begin{itemize}
     \item \textbf{Visualize} fast and flexible visualization with a variety of options allows data to be displayed the way the user wants it;
     \item \textbf{Dynamic Dashboard} dynamic and reusable dashboards may be created using template variables.
@@ -36,13 +51,42 @@ Now that we are familiar with the ''dashboard'' concept, we can highlight why we
           use native annotation store, with the ability to add annotation events directly from the graph panel or via the HTTP API, or querying other data sources.
           Event metadata and tags can be seen when hovering over events.
 \end{itemize}
+\paragraph{Time ranges}
+Grafana provides several ways to manage the time ranges of the data being visualized, for dashboard, panels and also for alerting, 
+with the support for following time units: s (seconds), m (minutes), h (hours), d (days), w (weeks), M (months), Q (quarters) and y (years).
 
-\paragraph{Loading speed of Grafana dashboards}
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        Example relative range & From:      & To:        \\ \hline
+        Last 5 minutes         & $now-5m$   & $now$      \\ \hline
+        The day so far         & $now/d$    & $now$      \\ \hline
+        This week              & $now/w$    & $now/w$    \\ \hline
+        This week so far       & $now/w$    & $now$      \\ \hline
+        This month             & $now/M$    & $now/M$    \\ \hline
+        This month so far      & $now/M$    & $now$      \\ \hline
+        Previous Month         & $now-1M/M$ & $now-1M/M$ \\ \hline
+        This year so far       & $now/Y$    & $now$      \\ \hline
+        This Year              & $now/Y$    & $now/Y$    \\ \hline
+    \end{tabular}
+    \caption{Time units and relative ranges example}
+    \label{table:time_picker}
+\end{table}
+The minus ($-$) operator allows you to step back in time, relative to $now$ and if the user wish to display the full period of the unit (day, week, month, etc…),
+append /<time unit> to the end. It is also possible to view fiscal periods, using fQ (fiscal quarter) and fy (fiscal year) time units.
+The plus ($+$) operator, instead, allows you to step forward in time relative to $now$. for example one might use this feature to look at predicted data in the future.
+Here [\ref{table:time_picker}] you can see some relative ranges samples.
+
+% \todo{EB: da qualche parte parlerei del massimo refresh rate sostenibile (se ha senso)}
+The minimum dashboard refresh interval is, per default 5 seconds; this can be increased or decreased keeping in mind that
+it will restrict users to set the refresh interval of a dashboard lower than given interval and anything below the default value could logically impact performance and responsiveness.
+
+\paragraph{Loading speed}
 % \texttt{And how to keep it fast}
-\todo{Potenzialmente da rimuovere/espandere}
 Loading speed of a Grafana dashboard depends on 5 major things:
 \begin{enumerate}
-    \item  pre-selected and saved time window: the larger the time period you query, the longer it takes to open and display the contents;
+    \item  pre-selected and saved time window: the larger the queried time period, the longer it takes to open and display the contents;
     \item  data frequency in the panels: in case of the very high frequency, non aggregated data, even if selected time period is minutes, it will take time to load;
     \item  the number of panels with the data inside;
     \item  your database structure;
@@ -50,7 +94,7 @@ Loading speed of a Grafana dashboard depends on 5 major things:
 \end{enumerate}
 
 \paragraph{Conclusion}
-Grafana is the right choice when  visualizing infrastructure, applications, network devices, sensors, and more. This is a great 24/7 monitoring solution for NOC and DevOps teams.
+Grafana is the right choice when visualizing infrastructure, applications, network devices, sensors, and more. This is a great 24/7 monitoring solution for NOC and DevOps teams.
 It can also help to manage all data from other application monitoring tools like AppDynamics, New Relic, Splunk, Dynatrace and all-in-one web interface for data viewing, alerting, and reporting.
 A further comparison with other data visualization tools, such as Power BI and Tableau, might make interesting reading.
 
