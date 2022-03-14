@@ -1,21 +1,57 @@
 \acsetup{
-%    make-links,
-%    pages / display     =   first,
-%    pages / fill        =   {, },
-    % format / first-long =   \emph,
-    % format / replace    =   true
+    make-links          =   true,
+    link-only-first     =   true,  %If this is activated then every short or alternative appearance of an acronym will be linked to its description in the list of acronyms.
+    pages / display     =   first,
+    pages / fill        =   {, },
+    format / first-long =   \emph,
+    format / replace    =   true
     % single              =   true,
     % single-style        =   long
 }
 
 % Chapter 1
+% Data Analysis
+\DeclareAcronym{BI}{
+    short   =   {BI},
+    long    =   {Business Intelligence}
+}
+\DeclareAcronym{DM}{
+    short   =   {DM},
+    long    =   {Data mining}
+}
+\DeclareAcronym{CRISP}{
+    short   =   {CRISP},
+    long    =   {Cross-industry standard process}
+}
+\DeclareAcronym{EDA}{
+    short   =   {EDA},
+    long    =   {Exploratory data analysis}
+}
+\DeclareAcronym{CDA}{
+    short   =   {CDA},
+    long    =   {Confirmatory data analysis}
+}
+\DeclareAcronym{KPIs}{
+    short   =   {KPIs},
+    long    =   {Key performance indicators}
+}
+
+% Maintenance
 \DeclareAcronym{cmms}{
     short   =   {CMMS},
     long    =   {Computerized Maintenance Management Systems}
 }
+\DeclareAcronym{PM}{
+    short   =   {PM},
+    long    =   {Preventive maintenance}
+}
 \DeclareAcronym{ppm}{
     short   =   {PPM},
     long    =   {Planned preventive maintenance}
+}
+\DeclareAcronym{PdM}{
+    short   =   {PdM},
+    long    =   {Predictive maintenance}
 }
 \DeclareAcronym{cbm}{
     short   =   {CBM},
@@ -37,6 +73,14 @@
     short   =   {IoT},
     long    =   {Internet Of Things}
 }
+\DeclareAcronym{ML}{
+    short   =   {ML},
+    long    =   {Machine Learning}
+}
+\DeclareAcronym{infra}{
+    short   =   {$\text{Infralytics}^\copyright$},
+    long    =   {Infrastructure Analytics}
+}
 
 % Chapter 3
 \DeclareAcronym{crud}{
@@ -56,8 +100,4 @@
 \DeclareAcronym{api}{
     short   =   {API},
     long    =   {Application Programming Interface}
-}
-\DeclareAcronym{ML}{
-    short   =   {ML},
-    long    =   {Machine Learning}
 }
