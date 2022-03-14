@@ -1,5 +1,6 @@
 \acsetup{
-    make-links,
+    make-links          =   true,
+    link-only-first     =   true,  %If this is activated then every short or alternative appearance of an acronym will be linked to its description in the list of acronyms.
     pages / display     =   first,
     pages / fill        =   {, },
     format / first-long =   \emph,
@@ -30,11 +31,19 @@
     short   =   {CDA},
     long    =   {Confirmatory data analysis}
 }
+\DeclareAcronym{KPIs}{
+    short   =   {KPIs},
+    long    =   {Key performance indicators}
+}
 
 % Maintenance
 \DeclareAcronym{cmms}{
     short   =   {CMMS},
     long    =   {Computerized Maintenance Management Systems}
+}
+\DeclareAcronym{PM}{
+    short   =   {PM},
+    long    =   {Preventive maintenance}
 }
 \DeclareAcronym{ppm}{
     short   =   {PPM},
