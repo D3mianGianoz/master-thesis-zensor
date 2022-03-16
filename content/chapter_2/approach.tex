@@ -1,10 +1,23 @@
-\subsection{What are the stages}
-\[\begin{tikzcd}
-	{Hardware} & Installation & {Data \space Management} & Analysis
-	\arrow[tail, from=1-1, to=1-2]
-	\arrow[tail, from=1-2, to=1-3]
-	\arrow[tail, from=1-3, to=1-4]
-\end{tikzcd}\]
+\section{Zensor Approach}
+A Zensor's standard offering can consists, if required, in several aspects, ordered logically here:
+\begin{enumerate}
+	\item \texttt{Hardware}: sensors and acquisition units.
+	\item \texttt{Installation and Commissioning}: engineering and CAD.
+	\item \texttt{Data Management:} data transfer \& storage with coupling to existing data sources (SCADA, weather, operational...), data cleaning and treatment.
+	\item \texttt{Analysis and Reporting}: predictions, trend and event detection, real-time reporting through online dashboards.
+\end{enumerate}
+as such Zensor takes end-to-end responsibility in monitoring the health and efficiency of structures and processes, we'll dive in these aspect in the following subsection.
+\begin{figure}[ht]
+	\begin{tikzcd}
+		{Hardware} & Installation & {Management} & Analysis
+		\arrow[tail, from=1-1, to=1-2]
+		\arrow[tail, from=1-2, to=1-3]
+		\arrow[tail, from=1-3, to=1-4]
+	\end{tikzcd}
+	\caption{Building blocks for full project}
+	\label{tik:standar_offer}
+\end{figure}
+
 \paragraph{Hardware and/or other Existing Data sources}
 Sometimes not enough data is available from the beginning. Deriving valuable insights from a monitoring system states from the data:
 identifying and locating the relevant data in existing databases/data warehouse or putting the right sensors,
@@ -12,33 +25,68 @@ with appropriate settings, on the right positions and measurement conditions;
 afterwards reading them out in the optimal way. All of this are defined clearly in every asset-specific package.
 
 \paragraph{Installation and Commissioning}
-Push the button of Industry 4.0. Initially links to the existing data sources are established and data gets ingested. 
+Push the button of Industry 4.0. Initially links to the existing data sources are established and data gets ingested.
 Where required a set of acquisition units and sensors is installed on the machine or structure.
-After a final verification on the spot (SAT) the monitoring system is launched: the assets enter the IoT.
+After a final verification on the spot (SAT) the monitoring system is launched: the assets enter the \acl{IoT}.
 
 \paragraph{Data Management}
-Data is continuously streaming in from individual setups as well as historian sources. 
+Data is continuously streaming in from individual setups as well as historian sources.
 Structuring, verifying and cleaning the data sets is an essential prerequisite to allow for a profound analysis afterwards: on your way to an automated, continuous and smart follow-up.
 
 \paragraph{Analysis and Clear Reporting}
-Advanced insights are unlocked using algorithms based on physics as well as big data approaches. 
+Advanced insights are unlocked using algorithms based on physics as well as big data approaches, as seen in Chapter~\ref{section:data_anal}
 Clear dashboards, warnings and periodic reports inform the owner or line manager about the present state and upcoming issues. Surprises are avoided, standstills reduced.
 
-\subsection{Advanced features and metrics}
-Here is a non-exhaustive list of the main monitoring metrics available 
-\paragraph{Availability}
-Have a continuous idea of availability, automatically as the platform combines different input streams and contextual information.
-\paragraph{Performance}
-Based on the data collected and machine-learning based methods for determining the operational condition the performance is calculated.
-\paragraph{Warnings}
-Whenever values start to deviate, or data streams stop, warnings are sent. This avoids 'black holes' in the insights of the production line or assets.
-\paragraph{Quality}
-Coupling to existing databases or using human input fields the product quality is linked to operational process parameters.
-\paragraph{MTTF}
-The \(Mean\space Time\space Till\space Failure\) is tracked continuously, for each asset covered the overall 'disturbance free' operation is displayed.
-\paragraph{MTBF}
-As events and operating conditions are automatically detected the \(Mean \space Time \space Between \space Failures\) is determined continuously, giving a good insight on where optimization is possible.
-\paragraph{OEE}
-Using all parameters cited above the \(Overall\space Equipment\space Effectiveness\) is determined, a major parameter for optimizing asset management strategies and future investments, with a huge cost savings potential.
-\paragraph{Factory information systems}
-Such systems are crucial for obtaining operational excellence. When well managed they maximize efficiency and effectiveness. Automated data collection and advanced analysis makes this possible.
+\subsubsection{Flexibility}
+Now that we are clear about the possible components of the \ac{SaaS}~\cite{Article:matthewlemerle_2012_its}, we can distinguish two possible different types of operational flow, as illustrated in figure~\ref{tik:standar_offer} and~\ref{tik:ligth_offer}.
+\begin{figure}[ht]
+	\begin{tikzcd}
+		{Datasources} & Commissioning & {Management} & Analysis
+		\arrow[tail, from=1-1, to=1-2]
+		\arrow[tail, from=1-2, to=1-3]
+		\arrow[tail, from=1-3, to=1-4]
+	\end{tikzcd}
+	\caption{Building blocks for light project}
+	\label{tik:ligth_offer}
+\end{figure}
+
+The reasons for having two paths with separate initial phases are several. One important factor is the current global semi-conductor~\cite{Article:bbcnews_2021_chip} and chip shortage,
+ which makes it difficult to procure \ac{IPCs} and sensors.
+On the other hand the light package (Fig. ~\ref{tik:ligth_offer}) could represents a first step, to try the service with a limited effort.
+Having said that, it has lower costs and timelines compared to the full package, but it complicates multi-source data management and the analysis that can be performed will be of lower granularity.
+Table~\ref*{tab:phase_diff} provides a further comparison.
+\begin{table}[h]
+	\begin{tabularx}{\textwidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
+		\toprule
+		\hfil\bfseries Full
+		 &
+		\hfil\bfseries Light
+		\\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
+		%% FULL, separated by empty line or \par
+		The engineering team has to design and devise which sensors to use, where to place them and why.\par
+		Hardware initial cost is high, and it requires weeks or months before it is collected and delivered to the zensor offices.\par
+		 &
+		%% LIGHT, separated by empty line or \par
+		Some sensors/devices are already inplace and can be integrated into the service\par
+		Possibility to manage client's independently metric collected data, with an additional effort in the third step\par
+		\\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
+		%% FULL, separated by empty line or \par
+		Installation phase requires several steps, including testing hardware and connection both at the factory (FAT) and on-site (SAT)\par
+		 &
+		%% LIGHT, separated by empty line or \par
+		Necessary and important information, such as network protocol and connection information, to set up links to existing data sources are collected.\par
+		\\\bottomrule
+	\end{tabularx}
+	\caption{1° \texttt{Hardware vs Datasources} and 2° \texttt{Installation vs Commissioning} Phases differences}
+	\label{tab:phase_diff}
+\end{table}
+
+That said, to give you some sense of what the service might do, here is a non-exhaustive list of the main advanced monitoring features and metrics available:
+\begin{enumerate}
+	\item[$\blacksquare$]\texttt{Availability}: have a continuous idea of availability, automatically as the platform combines different input streams and contextual information.
+	\item[$\blacksquare$]\texttt{Performance}: based on the data collected and machine-learning based methods for determining the operational condition the performance is calculated.
+	\item[$\blacksquare$]\texttt{Warnings}: whenever values start to deviate, or data streams stop, warnings are sent. This avoids ``black holes'' in the insights of the production line or assets.
+	\item[$\blacksquare$]\texttt{Quality}: coupling to existing databases or using human input fields the product quality is linked to operational process parameters.
+	\item[$\blacksquare$]\texttt{Factory information systems}: such systems are crucial for obtaining operational excellence. When well managed they maximize efficiency and effectiveness. Automated data collection and advanced analysis makes this possible.
+\end{enumerate}
+\clearpage
