@@ -1,15 +1,10 @@
 \section{Workflow}
-Preamble: I expand on the stages I have seen, not on those I have not seen.
-I am part of this project; I mention what I have done \dots
+As you will see better in Chapter~\ref{chapter:use_cases} dedicated to practical use cases, my internship has focused more on the last two phases, for obvious reasons of limited time and domain knowledge.
+So In this last section I would like to present some peculiar elements and techniques that zensor employs for the data management and analysis phases.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=\textwidth]{how_it_works_plan_owner.png}
-    \caption{\acl{SaaS} Workflow (Source:~\cite{Misc:zensor_official_website})}
-    \label{fig:zensor_flow}
-\end{figure}
+\todo{DG:questa sezione è sicuramente da rivedere, magari da rimuovere?}
 
-\subsubsection{Structure of a Deployable Script}\label{subsection:script_structure}
+\subsubsection{Analysis: Structure of a Deployable Script}\label{subsection:script_structure}
 \[\begin{tikzcd}
 		&& Datasource \\
 		&& {} \\
@@ -20,15 +15,22 @@ I am part of this project; I mention what I have done \dots
 		\arrow[from=3-5, to=1-3]
 	\end{tikzcd}\]
 
-Most scripts that run on the Zensor platform have a very common structure. For a given time window, they:
+Most scripts that run on the Zensor platform have a very common structure, so for a given time window, they:
 \begin{enumerate}
-	\item Load some data (either raw or from InfluxDB).
-	\item Process it in some (clever!) way.
+	\item Load batch of data (either raw or from InfluxDB).
+	\item Process it in some (clever!) way, e.g.\ computing a derived metric.
 	\item Write the results out to InfluxDB, to be shown in a dashboard.
 \end{enumerate}
-What time window they operate on will depend on what the task is, but also on whether the script is being invoked automatically by cron, or manually.
-If a script is being invoked manually, this is usually to run it over historical data e.g. rerunning a script for the month of February 2020. We typically call this \textbf{backfilling}.
-Typically, if the script is running in cron, it's loading ``recent`` data, e.g. from the past hour or past day, ending at the time the script started.
-Scripts on the Zensor platform need to support running in both modes, so there are a few guidelines to keep in mind when writing a script.
+What time window they operate on will depend on what the task is, but also on whether the script is being invoked automatically by cron, a job scheduler on Unix-like OS, or manually.
+If a script is being invoked \textit{manually}, this is usually to run it over historical data (e.g.\ rerunning a script for the month of February 2022). We typically call this operation \textbf{backfilling}.
+Typically, if the script is running in \textit{cron}, it's loading ``recent'' data (e.g.\ from the past hour or past day) ending at the time the script started.
+Scripts on the Zensor platform need to support running in both modes, so there are a few guidelines to keep in mind when writing code.
 
 % https://www.notion.so/zensor/Scripting-Guidelines-8411d59eb62a454d8a5bea728f102bbb
+\subsubsection{Data Management flow}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{how_it_works_plan_owner.png}
+    \caption{\acl{SaaS} Workflow (Source:~\cite{Misc:zensor_official_website})}
+    \label{fig:zensor_flow}
+\end{figure}

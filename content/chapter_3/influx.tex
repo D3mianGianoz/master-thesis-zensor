@@ -35,15 +35,15 @@ InfluxDB has no external dependencies and provides a SQL-like vocabulary with bu
 \begin{table}[ht]
     \centering
     \begin{tabular}{|l|l|l|l|l|}
-        \hline
-        time                 & location & scientist  & butterflies & honeybees \\ \hline
+        \toprule
+        time                 & location & scientist  & butterflies & honeybees \\ \midrule
         2015-08-18T00:00:00Z & 1        & langstroth & 12          & 23        \\ \hline
         2015-08-18T00:00:00Z & 1        & perpetua   & 1           & 30        \\ \hline
         2015-08-18T00:06:00Z & 1        & langstroth & 11          & 28        \\ \hline
         2015-08-18T05:54:00Z & 2        & langstroth & 2           & 11        \\ \hline
         2015-08-18T06:00:00Z & 2        & langstroth & 1           & 10        \\ \hline
         2015-08-18T06:06:00Z & 2        & perpetua   & 8           & 23        \\ \hline
-        2015-08-18T06:12:00Z & 2        & perpetua   & 7           & 22        \\ \hline
+        2015-08-18T06:12:00Z & 2        & perpetua   & 7           & 22        \\ \bottomrule
     \end{tabular}
     \caption{Sample time series dataset: number of butterflies and honeybees counted by two scientists}\label{tab:influx_example}
 \end{table}
