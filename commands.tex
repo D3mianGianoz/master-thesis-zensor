@@ -12,6 +12,24 @@
 % How to center a specific caption
 \captionsetup{justification=centering}
 
+% Best practice for hyperref link colours?
+% https://tex.stackexchange.com/questions/100905/best-practice-for-hyperref-link-colours
+\newcommand\myshade{85}
+\colorlet{mylinkcolor}{violet}
+\colorlet{mycitecolor}{YellowOrange}
+\colorlet{myurlcolor}{Aquamarine}
+
+\hypersetup{
+  linkcolor  = mylinkcolor!\myshade!black,
+  citecolor  = mycitecolor!\myshade!black,
+  urlcolor   = myurlcolor!\myshade!black,
+  colorlinks = true,
+}
+
+% Lists of figures and tables are not automatically added to the table of contents.
+% Automatic approach
+\usepackage[nottoc]{tocbibind}
+
 % \lstdefinelanguage{json}{
 %     numbers=left,
 %     numberstyle=\small,
