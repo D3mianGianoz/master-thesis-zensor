@@ -26,7 +26,7 @@ Stumabo also uses their knowledge to integrate the best blade in the FAM industr
     \label{fig:stumabo_prod_line}
 \end{figure}
 
-As shown in picture~\ref{fig:line_overview} there are four different stations with each one or two motors type ${A,B,C}$ (see figure: \ref{fig:line_schematics}).
+As shown in figure~\ref{fig:stumabo_prod_line} there are four different stations (\subref{fig:line_overview}) with each one or two motors type ${A,B,C}$ (\subref{fig:line_schematics}).
 Each station has grinding stones to sharpen a blade, which is one long strip of steel passing through all the machines.
 To perform their grinding task, the stones turn around their axe sharpening the steel blade, each machine in its own way.
 
@@ -58,26 +58,40 @@ As we saw together in section~\ref{section:zensor_approach}, we can have approxi
 However, as the reader will have already guessed, being a preparation campaign, as mentioned earlier, it will have less complexity than a big project.
 My contribution was to help with the analysis phase, but it's important to emphasize how the first three phases went, because they will have serious implications for data development and analysis.
 
-One 3-dimension accelerometer, called \textit{ACC3D} in \ref{fig:stumabo_stages}, and a ``mobile cabinet'' was provided to Stumabo, which they placed on each of the four machine and roughly kept track of the different positions and operations in a log file.
-We must therefore clarify, before we go any further, the industrial setup; in our aid comes engineering schematics as shown in~\ref{fig:top_view and blade}.
+\begin{wrapfigure}{l}{.25 \textwidth}
+    \includegraphics[width=.25\textwidth,height=.25\textwidth]{stumabo/installation/accelerometer_3_axis.jpg}
+    \caption{industrial ACC3D}
+    \label{fig:stumabo_acc3d}
+\end{wrapfigure}
+\paragraph{Hardware} One 3-dimension accelerometer, called \textit{ACC3D} in \ref{fig:stumabo_stages}, and a ``mobile cabinet'' was provided to Stumabo, which they placed on each of the four machine and roughly kept track of the different positions and operations in a log file.
+
+\paragraph{Installation} We must therefore clarify, before we go any further, the industrial setup: in our aid, comes the engineering schematics showed in figure \ref{fig:engineering_files};
+it consists in two subfigures: the first one (\subref{fig:top_view_line}) represents the same production line we saw earlier at \ref{fig:line_overview}, just from another prospective. 
+This view from above makes it easier for us to identify some important elements. 
+First of all a simple convention: within Stumabo the right side of the line is referred to as \textcolor{red}{red}, \textit{Rood} in Flemish, and, in the same way, the left side will be referred to as \textcolor{blue}{blue}, \textit{Blauw}.
+We can now make a direct connection with image (\subref{fig:blade_evolution})\, which shows us the evolution of the blade during the process.
+First it is sharpened, from the 1st \textcolor{blue}{blue} station, on the left side and then it passes to the 1st \textcolor{red}{red} station, where it will be rolled on the right side. Same goes for 2nd and 3rd station, that have two grinders aligned. 
+
+Hoping that this idea is clear to the reader we move on.
+\todo{DG: keep going}
+
 \begin{figure}[ht]
     \begin{subfigure}{\textwidth}
-        \includegraphics[width=.9\linewidth]{stumabo/installation/STU_General_Cordinate_System.png}
+        \includegraphics[width=\linewidth]{stumabo/installation/STU_General_Cordinate_System.png}
         \caption{Top view overview of stations plus grinding stones detail.
-            Purple dots on the bottom details are where the ``ad-hoc'' accelerometer was placed}
+            Purple dots on the bottom details are where the $3D$ accelerometer was placed}
         \label{fig:top_view_line}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
-        \includegraphics[width=.9\linewidth]{stumabo/installation/blade_processing.png}
+        \includegraphics[width=\linewidth]{stumabo/installation/blade_processing.png}
         \caption{Blade evolution, a sketched overview of the cut by station}
         \label{fig:blade_evolution}
     \end{subfigure}
     \caption{Engineering schematic are important during analysis}
-    \label{fig:top_view and blade}
+    \label{fig:engineering_files}
 \end{figure}
 
 Thus, a single sensor was placed in different locations, remaining on for the duration of the ad hoc project. We will therefore have a single data stream.
-
 %\subsection{Resources needed (to accomplish my task)}
 
 % Before starting the actual monitoring campaign there has been an “ad-hoc” measurement campaign. One accelerometer + “mobile cabinet” *(the previous SST cabinet + ACC)* was provided to Stumabo, 
