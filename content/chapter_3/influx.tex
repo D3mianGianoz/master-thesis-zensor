@@ -1,11 +1,11 @@
-\section{InfluxDB}
+\section{InfluxDB}\label{section:influxdb}
 \paragraph{Time Series} In mathematics, a time series is a series of data points which are indexed (or listed or graphed) in time order (see~\ref{fig:random time-series}).
 More generally, a time series is a sequence taken at evenly spaced intervals over a period of time. As a result, it's a sequence of discrete-time data.
 % \todo{EB: verificare ``succession''} DG: come alternative propongo sequence
 Ocean tidal heights, sunspot counts, and the Dow Jones Industrial Average's daily closing value are all examples of time series.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\textwidth]{content/chapter_3/images/random-data-plus-trend-r2.png}
+    \includegraphics[width=.9\textwidth]{content/chapter_3/images/random-data-plus-trend-r2.png}
     \caption{Random data plus trend, with best-fit line and different smoothings applied. (source: Wikimedia Commons~\cite{file:random-data-plus-trend-r2})}
     \label{fig:random time-series}
 \end{figure}
@@ -57,7 +57,7 @@ InfluxDB is a time series database and, by this aspect, has several limitations;
 % In fact Indeed 
 being optimized for this use case involves a number of trade-offs, primarily to increase performance at the cost of functionality~\cite{Misc:influx_docs}.
 Below, it is reported a list of three design ideas that lead to compromises that I personally encountered during my experience:
-\todo{DG: Potrebbero essere più di 3, mi sembrava un buon compromesso}
+% \todo{DG: Potrebbero essere più di 3, mi sembrava un buon compromesso}
 \begin{enumerate}
     \item Deletes are a rare occurrence. When they do occur, it is almost always against large ranges of old data that are cold for writes.
     \item Updates to existing data are a rare occurrence, and contentious updates never happen. Time series data is predominantly new data that is never updated.
@@ -81,11 +81,10 @@ Below, it is reported a list of three design ideas that lead to compromises that
     \end{tabularx}
     \caption{Pros and cons of InfluxDB}
 \end{table}
-
 \paragraph{Conclusion}
-It is therefore not surprising to conclude that, when compared to a general purpose relational database like SQL Server, InfluxDB, using default single node configuration, outperformed both write speed, disk storage usage (by a factor of 27x) and query execution time, where InfluxDB is up to 20x faster with an average of 8x faster~\cite{Misc:noor_2017_universit}.
-It can be seen that InfluxDB, tailored-made for Time Series data, is released after other competitive technologies (like Graphite, TimescaleDB, Prometeus) and yet still 1st among the popularity tier list \href{https://db-engines.com/en/ranking_trend/time+series+dbms}{as shown here}.
-\todo{EB: riscrivere contentuto che possa essere fruibile anche se stampato}
-% \todo{DG: Non so se valga la pena citarlo, lo prendo per un si?}
+It is therefore not surprising to conclude that, when compared to a general purpose relational database like SQL Server, InfluxDB, using default single node configuration, 
+outperformed both write speed, disk storage usage (by a factor of 27x) and query execution time, where InfluxDB is up to 20x faster with an average of 8x faster~\cite{Misc:noor_2017_universit}.
+It can be seen that InfluxDB, tailored-made for Time Series data, is released after other competitive technologies (like Graphite, TimescaleDB, Prometeus) and yet still 1st among the popularity tier list\footnote{\url{https://db-engines.com/en/ranking_trend/time+series+dbms}}.
+% \todo{EB: riscrivere contentuto che possa essere fruibile anche se stampato}
 The InfluxQL, SQL-subset query language, helps make it easier to use and adapt for people who are used to working with relational databases such as MySQL, even though influx
 implementation is a smaller subgroup, not fully supporting \ac{crud} operations. For more complex queries is almost mandatory using Flux, a functional-like query language developed in-house by Influx~\cite{Misc:influx_docs}.
