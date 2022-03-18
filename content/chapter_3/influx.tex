@@ -67,13 +67,13 @@ Below, it is reported a list of three design ideas that lead to compromises that
     \begin{tabularx}{\textwidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
         \toprule
         \hfil\bfseries Pros
-        &
+         &
         \hfil\bfseries Cons
         \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
         %% PROS, separated by empty line or \par
         Restricting access to deletes and updates allows for increased query and write performance\par
         InfluxDB is good at managing discontinuous data\par
-        &
+         &
         %% CONS, separated by empty line or \par
         Delete and Update functionality is significantly restricted, since influxDB is not \acs{crud} \par
         Schema-less design means that some database functions are not supported e.g. there are no cross table joins\par
