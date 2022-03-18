@@ -69,7 +69,7 @@ In the \textit{apply and combine} step, we might wish to do one of the following
               \item Filter out data based on the group sum or mean.
           \end{itemize}
     \item Some combination of the above: \textbf{GroupBy} will examine the results of the \textit{apply} step and try to return a sensibly \textit{combined} result if it doesn't fit into either of the above two categories.
-          \todo{EB: non capisco ``sensibly'' next, DG: ho scritto la traduzione, spero sia più chiaro, se no riformulo}
+%          \todo{EB: non capisco ``sensibly'' next, DG: ho scritto la traduzione, spero sia più chiaro, se no riformulo}
     \item Una qualche combinazione delle precedenti: GroupBy esaminerà i risultati del passo apply e cercherà di restituire un risultato sensatamente combinato se non rientra in nessuna delle due categorie precedenti.
 \end{itemize}
 Since the set of object instance methods on pandas data structures are generally rich and expressive, we often simply want to invoke, say, a DataFrame function on each group.
@@ -111,7 +111,5 @@ Furthermore, other time series features are available, and not only that notably
 \end{itemize}
 \paragraph{Conlcusion}
 Pandas provides a solid foundation upon which a very powerful data analysis ecosystem can be established, especially since the library is performance-optimized,
-with important code paths implemented in Cython or C.
-\todo{Cython \`e una roba moderna di voi giovani? Oppure \`e un typo?}
-No è un compilatore statico e ottimistico per poter estendere Python con potenti librerie in C: https://cython.org/
-``Cython gives you the combined power of Python and C''
+with important code paths implemented in Cython\footnote{Cython is a static Phyton compiler capable of using highly optimized C libraries \url{https://cython.org/}}
+
