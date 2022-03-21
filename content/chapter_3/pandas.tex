@@ -1,9 +1,9 @@
 \section{Pandas}\label{section:pandas}
-Pandas is a data manipulation and analysis software library created for the Python programming language. It provides data structures and functions for manipulating numerical tables and time series. It is free software distributed under the BSD three-clause licence~\cite{Misc:OpenLDAP_license:oldap-2.7}.
+Pandas is a data manipulation and analysis software library created for the Python programming language. It provides data structures and functions for manipulating numerical tables and time series. It is free software distributed under the BSD three-clause license~\cite{Misc:OpenLDAP_license:oldap-2.7}.
 The name derives from the words ``panel data'', which is an econometrics term for data sets that comprise observations for the same individuals over several time periods and, at the same time, is a parody of the term ``Python data analysis''~\cite{mckinney_data_2010}.
 
 \subsection{Series and DataFrame}
-Pandas is primarily used to analyse data. It supports data import from a variety of file formats, including comma-separated values (CSV), JSON, SQL database tables or queries, and Microsoft Excel~\cite{Misc:pandas_docs}.
+Pandas is primarily used to analyze data. It supports data import from a variety of file formats, including comma-separated values (CSV), JSON, SQL database tables or queries, and Microsoft Excel~\cite{Misc:pandas_docs}.
 Furthermore, Pandas supports a variety of data manipulation operations such as merging, reshaping, and selecting, as well as data cleaning and handling.
 To accomplish these goals, Pandas defines and makes use of two important software \textit{Classes}, Series and DataFrame, which we will now briefly introduce.
 \begin{figure}[ht]
@@ -13,13 +13,13 @@ To accomplish these goals, Pandas defines and makes use of two important softwar
     \label{fig:pandas_dataframe}
 \end{figure}
 
-\paragraph{Series} is a one-dimensional labeled array capable of holding any data type (integers, strings, floating point numbers, Python objects, etc.).
+\paragraph{Series} Is a one-dimensional labeled array capable of holding any data type (integers, strings, floating point numbers, Python objects, etc.).
 The axis labels are collectively referred to as the \textit{index}.
 
-\paragraph{DataFrame} is a 2-dimensional labeled data structure with columns of potentially different types; in some ways it is similar to
+\paragraph{DataFrame} Is a 2-dimensional labeled data structure with columns of potentially different types; in some ways it is similar to
 % EB: attenzione "it's like" e` informale
 a spreadsheet or an SQL table (see Figure~\ref{fig:pandas_dataframe}) in which each individual column is a \textit{Series}.
-It is, generally, the most commonly used pandas object, since it accepts many different kinds of input, which makes it very flexible~\cite{reback_pandas-dev/pandas:_2022}.
+It is, generally, the most commonly used pandas object, since it accepts different kinds of input, which makes it very flexible~\cite{reback_pandas-dev/pandas:_2022}.
 % \todo{EB: controllare Inglese next ``at makes him''?? Chi?? Se \`e Pandas ``it'' non ``him''}
 Along with the data, user
 % one 
@@ -35,7 +35,7 @@ The goal
 % idea
 of this subsection is to give an outline of how many possible use-cases are covered by this library, and, at the same time, to explore a couple of them that proved to be crucial during my internship experience.
 % \todo{EB: ``Let's start'' \`e troppo informale. Meglio qualcosa come ``We are now first  illustrate ...''}
-We are now first illustrate the concept of "grouping". \textit{grouping}.
+We are now first illustrate the concept of \textit{grouping}.
 
 \paragraph{Groupby}
 The name \textbf{GroupBy} should be quite familiar to those who have used a SQL-based tool or worked with relation database. This ``engine'' allows split-apply-combine operations on heterogeneous data sets.
@@ -72,10 +72,11 @@ In the \textit{apply and combine} step, we might wish to do one of the following
 %          \todo{EB: non capisco ``sensibly'' next, DG: ho scritto la traduzione, spero sia più chiaro, se no riformulo}
 \end{itemize}
 Since the set of object instance methods on pandas data structures are generally rich and expressive, we often simply want to invoke, say, a DataFrame function on each group.
-With this engine you can try multiple different approaches, testing what suits more your needs, even though often it is hard to define this three separate steps for badly shaped data.
+With this engine you can try multiple different approaches, testing what suits more your needs, even though often it is hard to define these three separate steps for badly shaped data.
 
 \paragraph{Time series resampling}
-Pandas contains extensive capabilities and features for working with time series data for all domains. Using the \textbf{NumPy} datetimes dtypes, it has consolidated a large number of features from other Python libraries (like \textbf{scikits.timeseries}) as well as created a tremendous amount of new functionality for manipulating time series data.
+Pandas contains extensive capabilities and features for working with time series data for all domains. Using the \textbf{NumPy} datetimes dtypes, 
+it has consolidated numerous features from other Python libraries (like \textbf{scikits.timeseries}) as well as created a tremendous amount of new functionality for manipulating time series data.
 As an example, Pandas supports:
 \begin{itemize}
     \item Parsing time series information from various sources and formats
@@ -96,7 +97,7 @@ Fortunately, Pandas has, once again, a simple-to-use, powerful, and efficient fu
 To keep things simple, we could say that resample is a time-based \textbf{Groupby} followed by a reduction method on each of its groups; as a positive side,
 this method can be used directly from \textit{DataFrameGroupBy} objects that we discussed in paragraph \textbf{GroupBy} previously discussed.
 % \todo{EB: attenzione, i paragrafi non possono essere riferiti. Infatti, la label viene espansa con il numero della sezioine. Considerare se inserire ``il paragrafo XYZ in SectionXYZ''}
-The resample function is very flexible and allows you to specify many different parameters to control the frequency conversion and resampling operation, both upsampling and downsampling.
+The resample function is very flexible and allows you to specify many parameters to control the frequency conversion and resampling operation, both up sampling and down sampling.
 %%%
 \paragraph{Others functionality}
 Furthermore, other time series features are available, and not only that notably:
@@ -110,4 +111,4 @@ Furthermore, other time series features are available, and not only that notably
 \end{itemize}
 \paragraph{Conlcusion}
 Pandas provides a solid foundation upon which a very powerful data analysis ecosystem can be established, especially since the library is performance-optimized,
-with important code paths implemented in Cython\footnote{an optimistic static Python compiler capable of using highly optimized C libraries \url{https://cython.org/}}
+with important code paths implemented in C and Cython\footnote{Optimistic static Python compiler capable of using highly optimized C libraries \url{https://cython.org/}}.

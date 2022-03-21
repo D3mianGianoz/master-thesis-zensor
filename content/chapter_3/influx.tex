@@ -18,7 +18,7 @@ Timescale, popular \ac{tsdb}, CEO \textit{Ajay Kulkarni}~\cite{Misc:asay_why_tim
     This practice of recording each and every change to the system as a new, different row is what makes time-series data so powerful.
     It allows us to measure change: analyse how something changed in the past, monitor how something is changing in the present, predict how it may change in the future.
 
-    So here's how I like to define time-series data: data that collectively represents how a system/process/behaviour changes over time.
+    So here's how I like to define time-series data: data that collectively represents how a system/process/behavior changes over time.
 \end{quote}
 Although it is possible to store time-series data in many diverse database types, the design of these systems with \textbf{time} as a \textbf{key} index is distinctly different from relational databases, which reduces discrete relationships through referential models.
 In many cases, the repositories of time-series data will utilize compression algorithms to manage the data efficiently~\cite{Book:devops_cookbook}. Furthermore, time series databases can also be configured to regularly delete old data, unlike traditional databases which are designed to store data indefinitely.
@@ -75,7 +75,7 @@ Below, it is reported a list of three design ideas that lead to compromises that
         InfluxDB is good at managing discontinuous data\par
          &
         %% CONS, separated by empty line or \par
-        Delete and Update functionality is significantly restricted, since influxDB is not \acs{crud} \par
+        Delete and Update functionality is significantly restricted, since InfluxDB is not \acs{crud} \par
         Schema-less design means that some database functions are not supported e.g. there are no cross table joins\par
         \\\bottomrule
     \end{tabularx}
