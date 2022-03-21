@@ -1,4 +1,4 @@
-\section{Zensor Approach}
+\section{Zensor Approach}\label{section:zen_approach}
 A Zensor's standard offering can consists, if required, in several aspects, ordered logically here:
 \begin{enumerate}
 	\item \texttt{Hardware}: sensors and acquisition units.
@@ -6,9 +6,9 @@ A Zensor's standard offering can consists, if required, in several aspects, orde
 	\item \texttt{Data Management:} data transfer \& storage with coupling to existing data sources (SCADA, weather, operational...), data cleaning and treatment.
 	\item \texttt{Analysis and Reporting}: predictions, trend and event detection, real-time reporting through online dashboards.
 \end{enumerate}
-As such Zensor takes end-to-end responsibility in monitoring the health and efficiency of structures and processes
-\todo{EB2DG: ``we'll dive'' troppo informale}
-we'll dive in these aspect in the following subsection.
+As such Zensor takes end-to-end responsibility in monitoring the health and efficiency of structures and processes, and
+we will develop these aspects in the following paragraphs.
+% \todo{EB2DG: ``we'll dive'' troppo informale}
 \begin{figure}[ht]
 	\begin{tikzcd}
 		{Hardware} & Installation & {Management} & Analysis
@@ -21,15 +21,17 @@ we'll dive in these aspect in the following subsection.
 \end{figure}
 
 \paragraph{Hardware and/or other Existing Data sources}
-Sometimes not enough data is available from the beginning. Deriving valuable insights from a monitoring system states from the data:
-\todo{EB2DG: il seguente dovrebbe essere un itemize?}
-identifying and locating the relevant data in existing databases/data warehouse or putting the right sensors,
-with appropriate settings, on the right positions and measurement conditions;
-afterwards reading them out in the optimal way. All of this are defined clearly in every asset-specific package.
+Deriving valuable insights from a monitoring system states from the data:
+\begin{itemize}
+	\item[A] identifying and locating the relevant data in existing databases/data warehouse;
+	\item[B] putting the right sensors, with appropriate settings, on the right positions and measurement conditions and, afterwards, reading them out in the optimal way;
+\end{itemize}
+Option A, B or both are available: it depends on whether enough data is available from the start.
+All this is clearly defined in each asset-specific package.
 
 \paragraph{Installation and Commissioning}
-\todo{EB2DG: non capisco la frase ``Push the button...''}
-Push the button of Industry 4.0. Initially links to the existing data sources are established and data gets ingested.
+% \todo{EB2DG: non capisco la frase ``Push the button...'' DG:rimossa}
+Initially links to the existing data sources are established and data gets ingested.
 Where required a set of acquisition units and sensors is installed on the machine or structure.
 After a final verification on the spot (SAT) the monitoring system is launched: the assets enter the \acl{IoT}.
 

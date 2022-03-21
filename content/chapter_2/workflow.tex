@@ -1,7 +1,8 @@
-\section{Workflow}
-As we will see better in Chapter~\ref{chapter:use_cases} dedicated to practical use cases, where will give more space to some technical details, my internship has focused more on the last two phases, 
-out of the four discussed previously \todo{EB2DG: ``last two phases'' di cosa? Conviene ricordarlo, a meno che non sia banale. Quali sono le fasi?}, for reasons of limited time and domain knowledge. Now, in this last section, 
-I would like to present some peculiar elements and techniques that zensor employs for the 3rd and 4th phases: data management and analysis.
+\section{Workflow}\label{section:workflow}
+% \todo{EB2DG: ``last two phases'' di cosa? Conviene ricordarlo, a meno che non sia banale. Quali sono le fasi?},
+As we will see better in Chapter~\ref{chapter:use_cases} dedicated to practical use cases, where we will give more space to some technical details, 
+my internship, for reasons of limited time and domain knowledge, has focused more on the last two phases, out of the four, of zensor's product discussed previously in Section\ref{section:zen_approach}. 
+Now, in this last section, I would like to present some peculiar elements and techniques that zensor employs for the 3rd and 4th phases: data management and analysis.
 
 % https://www.notion.so/zensor/Scripting-Guidelines-8411d59eb62a454d8a5bea728f102bbb
 \subsubsection{Architecture}
@@ -26,9 +27,9 @@ need to be built. As interesting a discussion as this is, this is likely to get 
 	\item From there some advanced feature are deployed: for instance an alarming system, with SMS and email notification, 
 		or PDF reporting tool for ``freezing'' in time some of the most interesting dashboard panel with custom-made extra insights. %On top on this
 \end{itemize}
- 
-\subsubsection{Zensor Library}
+
 % https://www.notion.so/zensor/Zensor-library-90259840e02349a7adc5cb2a48abf994
+\subsubsection{Zensor Library}
 Zensor library is an in-house developed Python package, containing functionality which is generic and useful to a number of projects. At present, the library contains the following main modules: 
 clients, alerts and time.
 \paragraph{Clients}
@@ -43,11 +44,14 @@ Three submodules are available:
 	\item Email: This will send an E-mail through the \textcolor{orange}{AWS Simple E-mail service} where messages sent from EC2 instances are free up to 62,000 per month.
 \end{itemize}
 \paragraph{Time}
-\todo{EB2DG: controllare Inglese ``The contains''}
-The contains two functions that are designed to ease writing scripts that generate reproducible time ranges, ensuring that analysis is always aligned on the correct time window:
-\todo{EB2DG: itemize? enumerate?}
-the first one will generate evenly spaced timestamps in a given range, while the second one, instead generated pairs of times, which are separated by the argument (time) \texttt{interval}, the ``amplitude'' of the window.
-The latter can be useful e.g.\ to generate a window for the current year/month/week to date.
+% \todo{EB2DG: controllare Inglese ``The contains''}
+This includes two functions, designed to ease writing scripts that generate reproducible time ranges, ensuring that analysis is always aligned on the correct time window:
+\begin{enumerate}
+	\item first one will generate evenly spaced timestamps in a given range;
+	\item the second one, instead generated pairs of times, which are separated by the argument (time) \texttt{interval}, the ``amplitude'' of the window.
+\end{enumerate}
+The goal of a good script should be that this happens in a reliably way regardless of \textbf{when} exactly the script is run.
+In this prospective, \textit{generate\_timewindow} can be useful e.g.\ to generate a window for the current year/month/week to date.
 
 \subsubsection{Script Structure}\label{subsection:script_structure}
 \begin{figure}
@@ -75,5 +79,5 @@ If a script is being invoked \textit{manually}, this is usually to run it over h
 Typically, if the script is running in \textit{cron}, it's loading ``recent'' data (e.g.\ from the past hour or past day) ending at the time the script started.
 Scripts on the Zensor platform need to support running in both modes, so there are a few guidelines to keep in mind when writing code.
 
-% The goal of a good script should be that this happens in a reliably way regardless of when exactly the script is run. 
+% 
 
