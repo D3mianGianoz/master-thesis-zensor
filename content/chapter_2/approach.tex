@@ -6,7 +6,9 @@ A Zensor's standard offering can consists, if required, in several aspects, orde
 	\item \texttt{Data Management:} data transfer \& storage with coupling to existing data sources (SCADA, weather, operational...), data cleaning and treatment.
 	\item \texttt{Analysis and Reporting}: predictions, trend and event detection, real-time reporting through online dashboards.
 \end{enumerate}
-as such Zensor takes end-to-end responsibility in monitoring the health and efficiency of structures and processes, we'll dive in these aspect in the following subsection.
+As such Zensor takes end-to-end responsibility in monitoring the health and efficiency of structures and processes, and
+we will develop these aspects in the following paragraphs.
+% \todo{EB2DG: ``we'll dive'' troppo informale}
 \begin{figure}[ht]
 	\centering
 	\begin{tikzcd}
@@ -20,13 +22,17 @@ as such Zensor takes end-to-end responsibility in monitoring the health and effi
 \end{figure}
 
 \paragraph{Hardware and/or other Existing Data sources}
-Sometimes not enough data is available from the beginning. Deriving valuable insights from a monitoring system states from the data:
-identifying and locating the relevant data in existing databases/data warehouse or putting the right sensors,
-with appropriate settings, on the right positions and measurement conditions;
-afterwards reading them out in the optimal way. All of this are defined clearly in every asset-specific package.
+Deriving valuable insights from a monitoring system states from the data:
+\begin{itemize}
+	\item[A] identifying and locating the relevant data in existing databases/data warehouse;
+	\item[B] putting the right sensors, with appropriate settings, on the right positions and measurement conditions and, afterwards, reading them out in the optimal way;
+\end{itemize}
+Option A, B or both are available: it depends on whether enough data is available from the start.
+All this is clearly defined in each asset-specific package.
 
 \paragraph{Installation and Commissioning}
-Push the button of Industry 4.0. Initially links to the existing data sources are established and data gets ingested.
+% \todo{EB2DG: non capisco la frase ``Push the button...'' DG:rimossa}
+Initially links to the existing data sources are established and data gets ingested.
 Where required a set of acquisition units and sensors is installed on the machine or structure.
 After a final verification on the spot (SAT) the monitoring system is launched: the assets enter the \acl{IoT}.
 
@@ -39,7 +45,7 @@ Advanced insights are unlocked using algorithms based on physics as well as big 
 Clear dashboards, warnings and periodic reports inform the owner or line manager about the present state and upcoming issues. Surprises are avoided, standstills reduced.
 
 \subsubsection{Flexibility}
-Now that we are clear about the possible components of the \ac{SaaS}~\cite{Article:matthewlemerle_2012_its}, we can distinguish two possible different types of operational flow, as illustrated in figure~\ref{tik:standar_offer} and~\ref{tik:ligth_offer}.
+Now that we are clear about the possible components of the \ac{SaaS}~\cite{Article:matthewlemerle_2012_its}, we can distinguish two possible different types of operational flow, as illustrated in Figures~\ref{tik:standar_offer} and~\ref{tik:ligth_offer}.
 \begin{figure}[ht]
 	\centering
 	\begin{tikzcd}
@@ -52,9 +58,9 @@ Now that we are clear about the possible components of the \ac{SaaS}~\cite{Artic
 	\label{tik:ligth_offer}
 \end{figure}
 
-The reasons for having two paths with separate initial phases are several. One important factor is the current global semi-conductor~\cite{Article:bbcnews_2021_chip} and chip shortage,
-which makes it difficult to procure \ac{IPCs} and sensors.
-On the other hand the light package (Fig. ~\ref{tik:ligth_offer}) could represents a first step, to try the service with a limited effort.
+The reasons for having two paths with separate initial phases are several. One important factor is the current global semi-conductor and chip shortage~\cite{Article:bbcnews_2021_chip},
+ which makes it difficult to procure \ac{IPCs} and sensors.
+On the other hand the light package (Figure~\ref{tik:ligth_offer}) could represent a first step, to try the service with a limited effort.
 Having said that, it has lower costs and timelines compared to the full package, but it complicates multi-source data management and the analysis that can be performed will be of lower granularity.
 Table~\ref*{tab:phase_diff} provides a further comparison.
 \begin{table}[ht]

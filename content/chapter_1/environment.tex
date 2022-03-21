@@ -5,8 +5,7 @@ This has evolved over time to encompass a variety of terms that indicate various
 these actions might occur before or after a failure~\cite{Misc:maintenance_2016_efnms}. %EFNMS
 
 \paragraph{Types}
-The marine and air transportation, offshore structures, industrial plant and facility management industries depend on maintenance,
-repair and overhaul \acs{mro} including scheduled or preventive paint maintenance programmes to maintain and restore coatings applied
+The marine and air transportation, offshore structures, industrial plant and facility management industries depend on \ac{mro} including scheduled or preventive paint maintenance programmes to maintain and restore coatings applied
 to steel in environments subject to attack from erosion, corrosion and environmental pollution~\cite{Report:iso_2018_paints}.
 
 Architectural conservation employs \ac{mro} to preserve, rehabilitate, restore, or reconstruct historical structures with stone,
@@ -14,7 +13,7 @@ brick, glass, metal, and wood which match the original constituent materials whe
 The basic types of maintenance falling under \acs{mro} include:
 \begin{itemize}
     \item \textbf{Corrective maintenance}, where equipment is repaired or replaced after wear, malfunction or break down.
-    \item \textbf{Preventive maintenance}, where equipment is checked and serviced in a planned manner (in a scheduled points in time or continuously).
+    \item \textbf{Preventive maintenance}, where equipment is checked and serviced in a planned manner (in scheduled points in time or continuously).
     \item \textbf{Reinforcement}, where equipment is reinforced and hardened to prevent failure.
 \end{itemize}
 \begin{figure}[t]
@@ -26,8 +25,8 @@ The basic types of maintenance falling under \acs{mro} include:
 These are huge topics and we are going to focus mostly on corrective and preventive maintenance.
 \todo{DG:Expand this connection?}
 
-\paragraph{Corrective maintenance} is a type of reactive maintenance that is performed on equipment after it has broken down or malfunctioned,
-sometimes referred to as ``fighting fires``. Not only can worn equipment damage other parts and cause multiple damages, but it can also result in significant repair and
+\paragraph{Corrective maintenance} Is a type of reactive maintenance that is performed on equipment after it has broken down or malfunctioned,
+sometimes referred to as ``fighting fires''. Not only can worn equipment damage other parts and cause multiple damages, but it can also result in significant repair and
 replacement costs as well as lost revenue due to downtime during overhaul. Traditional procedures like welding and metal flame spraying,
 as well as designed solutions with thermoset polymeric materials, are used to rebuild and resurface equipment and infrastructure
 damaged by erosion and corrosion as part of corrective or preventive maintenance programs.
@@ -49,7 +48,7 @@ The main objectives of preventive maintenance are as follows:
 \end{enumerate}
 Many people, me included, confuse the phrases \textit{preventive, predictive, and prescriptive} maintenance, and while they are distinct, the latter two might
 be considered kinds of preventive maintenance. Preventative maintenance in all forms aids manufacturers in transitioning from a
-repair-and-replace to a preventive maintenance approach~\cite{Misc:trout_2019_preventive}. Let's look at the different sorts of preventative maintenance.
+repair-and-replace to a preventive maintenance approach~\cite{Misc:trout_2019_preventive}. Let's look at the different types of preventative maintenance.
 
 \begin{itemize}
     \item \textbf{\ac{ppm}}, more commonly referred to planned maintenance
@@ -70,13 +69,13 @@ repair-and-replace to a preventive maintenance approach~\cite{Misc:trout_2019_pr
                     For example, when machine $X$ reaches a certain number of hours of operation, this creates a trigger
                     to schedule a booking for a service technician to perform on-demand maintenance.
           \end{itemize}
-    \item \textbf{\ac{PdM}} are intended to assist in determining the state of in-service equipment so that maintenance can be scheduled.
+    \item \textbf{\ac{PdM}} are intended to assist in determining the state of in-service equipment, so that maintenance can be scheduled.
           Because actions are performed only when warranted, this strategy promises cost reductions over routine or time-based preventive maintenance.
           As a result, it is viewed as condition-based maintenance which is carried out in accordance by estimations of an item's degradation status.
           Predictive maintenance's key benefit is that it allows for easy scheduling of corrective maintenance and prevents unexpected equipment breakdowns~\cite{Misc:danielpenn_2020_what}.
 
           It is particularly useful when coupled with \acs{cmms} software; Logging work requirements data allows managers to review data and notice failure patterns over time.
-          This information allows to predict when outages will occur based on historical data and plan maintenance tasks to avoid them~\cite{Misc:trout_2019_preventive}.
+          This information allows predicting when outages will occur based on historical data and plan maintenance tasks to avoid them~\cite{Misc:trout_2019_preventive}.
     \item \textbf{\ac{cbm}} to put it succinctly, is \textit{maintenance when it is needed}. Although being chronologically much older,
           it is considered one sector or practice within the broader and younger predictive maintenance field, where new \ac{AI} technology and \ac{IoT}
           connectivity abilities are put to use, to help schedule preventive maintenance tasks.
@@ -99,7 +98,7 @@ The equipment's health will be determined by this system, and maintenance will b
 Recent technological advancements have enabled widespread equipment instrumentation, and, when combined with improved tools for analyzing condition data,
 maintenance personnel is more than ever able to determine when it is appropriate to undertake maintenance on a piece of equipment.
 \ac{cbm}, in essence, should allow maintenance professionals to focus on only the necessary tasks, reducing spare parts costs, system downtime, and maintenance time.
-Furthermore using \ac{ML} based scheduled maintenance could not only predicts a possible failure, but also attempts to make result-oriented maintenance recommendations based on that machine's analysis.
+Furthermore, using \ac{ML} based scheduled maintenance could not only predict a possible failure, but also attempts to make result-oriented maintenance recommendations based on that machine's analysis.
 
 \paragraph{Challenges}
 Despite its usefulness, there are several challenges to the use of \acl{cbm}.
@@ -142,15 +141,21 @@ Despite its usefulness, there are several challenges to the use of \acl{cbm}.
 % \subsubsection{Repair minimization}
 \subsection{A possible solution}
 Today, most often, technical data sheets coupled with the knowledge of a number of unique experienced individuals are used to determine when the asset requires maintenance.
-Product quality only becomes an issue when customers start complaining and repairs are done when it's already far too late,
+Product quality only becomes an issue when customers start complaining and repairs are done when it is already far too late,
 All of these puts tremendous strain on the people responsible for the asset, while it could be avoided
 Unexpected shutdowns are costly and very demanding for the workforce involved; a possible solution would be making assets smart in order to increase the availability.
 The best way to validate the actual health is by having a continuous look at a broad data set and adding a specific multi-aspect monitoring setup
 consisting of different sensor types that follow the behavior of the asset's general state-of-health~\cite{Misc:zensor_official_website}.
 
-\paragraph{\ac{infra}}
-Zensor platform is designed to make \ac{PdM} as easy as possible. It graphically shows you the current state of your asset, it alarms you when a certain component is about to
-break down and the collection and aggregation of all kinds of sensor and operational data makes it possible to go beyond the symptom level of a mechanical failure
-and detect the underlying reason for the breakdown. Relying on \ac{infra} will not only lower your maintenance costs significantly,
-it will also have a serious impact on your plant’s efficiency by increasing uptime and lowering the occurrence of unexpected mechanical breakdowns~\cite{Misc:vaningelgem_2020_what}.
+\paragraph{\ac{infra}} 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{how_it_works_plan_owner.png}
+    \caption{\acl{SaaS} Workflow (Source:~\cite{Misc:zensor_official_website})}
+    \label{fig:zensor_flow}
+\end{figure}
+Zensor platform~\ref{fig:zensor_flow} is designed to make \ac{PdM} as easy as possible. It graphically shows you the current state of your asset, it alarms you when a certain component is about to
+break down and the collection and aggregation of all kinds of sensor and operational data makes it possible to go beyond the symptom level of a mechanical failure 
+and detect the underlying reason for the breakdown. Relying on \ac{infra} will not only lower your maintenance costs significantly, 
+it will also have a serious impact on your plant's efficiency by increasing uptime and lowering the occurrence of unexpected mechanical breakdowns~\cite{Misc:vaningelgem_2020_what}.
 

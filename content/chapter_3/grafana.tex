@@ -1,4 +1,4 @@
-\section{Grafana}
+\section{Grafana}\label{section:grafana}
 Grafana is a web-based analytics and interactive visualization application that runs on a variety of platforms.
 When connected to supported data sources, it produces web-based charts, graphs, and alerts.
 Grafana Enterprise, a paid version with more features, is available as a self-hosted installation or as a Grafana Labs cloud service account~\cite{Misc:grafana_labs_website}.
@@ -15,7 +15,6 @@ But what is a dashboard anyway?
     \includegraphics[width=\linewidth]{content/chapter_3/images/uk_dashboard_covid.png}
     \caption{Official data and insights on coronavirus (Source: \href{https://coronavirus.data.gov.uk/)}{gov.uk}) }
     \label{fig:corona_uk_dashboard}
-    \label{section:grafana}
 \end{figure}
 A dashboard, in business, is a type of graphical user interface that often enables quick access to key performance indicators (KPIs) related to a certain goal or business activity.
 In our context, ``dashboard'' refers to a ``progress report'' or ``report'' and, as a type of data visualization, it is mostly accessible by a web browser and is usually linked to regularly updating data sources.
@@ -75,7 +74,7 @@ with the support for following time units: s (seconds), m (minutes), h (hours), 
 \end{table}
 The minus ($-$) operator allows you to step back in time, relative to $now$ and if the user wish to display the full period of the unit (day, week, month, etc…),
 append /<time unit> to the end. It is also possible to view fiscal periods, using fQ (fiscal quarter) and fy (fiscal year) time units.
-The plus ($+$) operator, instead, allows you to step forward in time relative to $now$. for example one might use this feature to look at predicted data in the future.
+The plus ($+$) operator, instead, allows you to step forward in time relative to $now$. For example one might use this feature to look at predicted data in the future.
 Here [\ref{table:time_picker}] you can see some relative ranges samples.
 
 % \todo{EB: da qualche parte parlerei del massimo refresh rate sostenibile (se ha senso)}
@@ -94,7 +93,7 @@ Loading speed of a Grafana dashboard depends on 5 major things:
 \end{enumerate}
 
 \paragraph{Conclusion}
-Grafana is the right choice when visualizing infrastructure, applications, network devices, sensors, and more. This is a great 24/7 monitoring solution for NOC and DevOps teams.
+Grafana is the right choice when visualizing infrastructure, applications, network devices, sensors, and more. This is a great $24/7$ monitoring solution for NOC and DevOps teams.
 It can also help to manage all data from other application monitoring tools like AppDynamics, New Relic, Splunk, Dynatrace and all-in-one web interface for data viewing, alerting, and reporting.
 A further comparison with other data visualization tools, such as Power BI and Tableau, might make interesting reading.
 
