@@ -1,6 +1,6 @@
 \section{Workflow}
 As we will see better in Chapter~\ref{chapter:use_cases} dedicated to practical use cases, where will give more space to some technical details, my internship has focused more on the last two phases, 
-out of the four discussed previously, for reasons of limited time and domain knowledge. Now, in this last section, 
+out of the four discussed previously \todo{EB2DG: ``last two phases'' di cosa? Conviene ricordarlo, a meno che non sia banale. Quali sono le fasi?}, for reasons of limited time and domain knowledge. Now, in this last section, 
 I would like to present some peculiar elements and techniques that zensor employs for the 3rd and 4th phases: data management and analysis.
 
 % https://www.notion.so/zensor/Scripting-Guidelines-8411d59eb62a454d8a5bea728f102bbb
@@ -13,7 +13,7 @@ I would like to present some peculiar elements and techniques that zensor employ
 \end{figure}
 Making the assumption that the first two steps have gone well, we make a simplified scenario: the sensors of project \textit{22001\_XXX} have been properly installed and wired to the \acs{IPCs}, programmed by the engineering team to collect data and aggregate it into files. 
 We could say that the ``pump'' from the data lake\footnote{Type of data repository that stores large and varied sets of raw data in its native format: \url{https://www.redhat.com/en/topics/data-storage/what-is-a-data-lake}} is up and running, but now the ``pipelines'' 
-need to be built. As interesting a discussion as this is, this is likely to get off-topic. To stay at a shallow level let's take a look at figure~\ref{fig:zensor_sys_architecture}; it shows us that:
+need to be built. As interesting a discussion as this is, this is likely to get off-topic. To stay at a shallow level let's take a look at Figure~\ref{fig:zensor_sys_architecture}; it shows us that:
 \begin{itemize}
 	\item The possible data sources, including our sensor data, are various, not to mention the formats or what protocols are used for managing transfer. 
 	\item All ``roads'' lead to \textcolor{orange}{\ac{AWS}}, ensuring that each client will then have its own separate and independent cloud \textcolor{orange}{EC2}\footnote{Amazon Elastic Compute Cloud allows users to rent virtual computers on which to run their own computer applications.} 
@@ -43,7 +43,9 @@ Three submodules are available:
 	\item Email: This will send an E-mail through the \textcolor{orange}{AWS Simple E-mail service} where messages sent from EC2 instances are free up to 62,000 per month.
 \end{itemize}
 \paragraph{Time}
+\todo{EB2DG: controllare Inglese ``The contains''}
 The contains two functions that are designed to ease writing scripts that generate reproducible time ranges, ensuring that analysis is always aligned on the correct time window:
+\todo{EB2DG: itemize? enumerate?}
 the first one will generate evenly spaced timestamps in a given range, while the second one, instead generated pairs of times, which are separated by the argument (time) \texttt{interval}, the ``amplitude'' of the window.
 The latter can be useful e.g.\ to generate a window for the current year/month/week to date.
 
