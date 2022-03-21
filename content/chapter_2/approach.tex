@@ -1,4 +1,4 @@
-\section{Zensor Approach}\label{section:zen_approach}
+\section{Zensor Approach}\label{section:zensor_approach}
 A Zensor's standard offering can consists, if required, in several aspects, ordered logically here:
 \begin{enumerate}
 	\item \texttt{Hardware}: sensors and acquisition units.
@@ -10,6 +10,7 @@ As such Zensor takes end-to-end responsibility in monitoring the health and effi
 we will develop these aspects in the following paragraphs.
 % \todo{EB2DG: ``we'll dive'' troppo informale}
 \begin{figure}[ht]
+	\centering
 	\begin{tikzcd}
 		{Hardware} & Installation & {Management} & Analysis
 		\arrow[tail, from=1-1, to=1-2]
@@ -46,6 +47,7 @@ Clear dashboards, warnings and periodic reports inform the owner or line manager
 \subsubsection{Flexibility}
 Now that we are clear about the possible components of the \ac{SaaS}~\cite{Article:matthewlemerle_2012_its}, we can distinguish two possible different types of operational flow, as illustrated in Figures~\ref{tik:standar_offer} and~\ref{tik:ligth_offer}.
 \begin{figure}[ht]
+	\centering
 	\begin{tikzcd}
 		{Datasources} & Commissioning & {Management} & Analysis
 		\arrow[tail, from=1-1, to=1-2]
@@ -83,7 +85,7 @@ Table~\ref*{tab:phase_diff} provides a further comparison.
 		Necessary and important information, such as network protocol and connection information, to set up links to existing data sources are collected.\par
 		\\\bottomrule
 	\end{tabularx}
-	\caption{1° \texttt{Hardware} vs \texttt{Datasources} and 2° \texttt{Installation} vs \texttt{Commissioning} Phases differences}
+	\caption[1° and 2° Phases differences]{1° \texttt{Hardware} vs \texttt{Datasources} and 2° \texttt{Installation} vs \texttt{Commissioning} Phases differences}
 	\label{tab:phase_diff}
 \end{table}
 
@@ -97,9 +99,9 @@ That said, to give you some sense of what the service might do, here is a non-ex
 \end{enumerate}
 
 \subsubsection[short]{Maintenance metrics}
-A typical analysis involves performing a variety of calculations to obtain useful metrics, from static to maintenance; but what are the maintenance metrics anyway? 
+A typical analysis involves performing a variety of calculations to obtain useful metrics, from static to maintenance; but what are the maintenance metrics anyway?
 There are two categories of maintenance \ac{KPIs} which include the leading and lagging indicators. The leading indicators signal future events and the lagging indicators follow the past events.
-We will give space to the latter category. For completeness here is how \acl{infra} platform could help you, asset owner, dealing with $MTTF$, $MTBF$, $OEE$.  
+We will give space to the latter category. For completeness here is how \acl{infra} platform could help you, asset owner, dealing with $MTTF$, $MTBF$, $OEE$.
 \begin{itemize}
 	\item[$\star$] $MTTF$: The \textit{Mean Time Till Failure} is tracked continuously, for each asset covered the overall ``disturbance free'' operation is displayed.
 	\item[$\star$] $MTBF$: As events and operating conditions are automatically detected the \textit{Mean Time Between Failures} is determined continuously, giving a good insight on where optimization is possible.
