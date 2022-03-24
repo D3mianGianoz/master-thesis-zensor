@@ -1,6 +1,6 @@
 \todo{DG: Intro}
 
-\section{Analyze blade grinder vibration}
+\section{Analyse blade grinder vibration}
 In this section I'd like to talk you about the difficulties encountered in vibration analysis and correlated problems, such as my lack of knowledge of the subject, 
 doubts about the reference system (local vs global),
 the lack of precise operational data, counter-intuitive results, and the need to strengthen the methodology for further analysis.
@@ -55,14 +55,12 @@ Let's see what the goals are in the long and short term and then exploring the l
 \subsection{Project description by phases}
 \begin{figure}[ht]
     \includegraphics[width=\textwidth]{stumabo/21022_STU.png}
-    \caption{Core Stages of this (full) project}
+    \caption{Stumabo's (full) project core stages}
     \label{fig:stumabo_stages}
 \end{figure}
 As we saw together in section~\ref{section:zensor_approach}, we can have two types of projects and this one a ``complete'' one.
 However, as the reader will have already guessed, being a preparation campaign, as mentioned earlier, it will have less complexity than a big project.
 My contribution was to help with the analysis phase, but it's important to emphasize how the first three phases went, because they will have serious implications for data development and analysis.
-
-
 
 \paragraph{Hardware} 
 \begin{figure}[ht]
@@ -93,7 +91,7 @@ Unfortunately this is the only operational data available, with the following st
 As you can see, despite being in Flemish, it has several tags but with one big issue: start and end time are approximate and do not reflect the data trends collected by the above-mentioned sensor.
 More on that later on. 
 
-\begin{table}[h]
+\begin{table}[ht]
     \centering
     \begin{tabularx}{\textwidth}{llllll}
         \toprule
@@ -104,7 +102,7 @@ More on that later on.
         \dots & \dots & \dots & \dots & \dots & \dots \\\midrule
         30/11/2021 & 12:35 & 14:07 & Prod & \dots & \dots \\\bottomrule
     \end{tabularx}
-    \caption{Log file structure}
+    \caption{Stumabo's log file structure}
     \label{tab:stu_logfile}
 \end{table}
 
@@ -113,15 +111,15 @@ it consists in three subfigures: the first one (\subref{fig:top_view_line}) repr
 This view from above makes it easier for us to identify some important elements, e.g.\ how many stones are present for each station.
 It is essential to clarify a simple convention: within Stumabo the right side of the line is referred to as \textcolor{red}{red}, \textit{rood} in Flemish, and, in the same way, 
 the left side will be referred to as \textcolor{blue}{blue}, \textit{blauw}. 
-Speaking about colors, we can now make a direct connection with Figure (\subref{fig:blade_evolution}), which shows us the evolution of the blade during the process.
+Speaking about colours, we can now make a direct connection with Figure (\subref{fig:blade_evolution}), which shows us the evolution of the blade during the process.
 % Considering that grinding stones turn around their axe sharpening the steel blade.
 First it is sharpened, from the 1st \textcolor{blue}{blue} station, on the left side, and then it passes to the 1st \textcolor{red}{red} station, where it will be rolled on the right side. 
 Same goes for 2nd and 3rd station, that have two grinders aligned. 
 
 Now that we are aware of how the industrial process works, let's move on to diagram (\subref{fig:local_to_global}).
-It represents in more detail how the sensor has been installed and what consequences has with respect to the coordinate system, 
+It represents in more detail how the sensor has been installed and what consequences it has with respect to the coordinate system, 
 a somewhat complex issue that has caused several headaches in the analysis phase. This would therefore appear to be a good point to take stock of the situation.
-The accelero was installed within the line, adjacent to the stones and close to the blade, by means of a round magnet, as shown in Figure \ref{fig:s1b_foto}.
+The accelerometer was installed within the line, adjacent to the stones and close to the blade, by means of a round magnet, as shown in Figure \ref{fig:s1b_foto}.
 Moreover, the same device was placed, at different times in different stations, mirrored on both sides, except the last one, for a total of five different locations: 
 ${S_{1}\textcolor{red}{R}\&\textcolor{blue}{B}, S_{2}\textcolor{red}{R}\&\textcolor{blue}{B}, S_{3}\textcolor{blue}{B}}$ as shown in the bottom part of Figure \ref{fig:top_view_line}.
 It follows that two different reference systems are present:
@@ -149,14 +147,14 @@ So it will be necessary to report everything in global coordinates, taking into 
         \caption{From local to general coordinate system, top view}
         \label{fig:local_to_global}
     \end{subfigure}
-    \caption{Engineering schematic are also important during analysis}
+    \caption{Stumabo's engineering schematic, also relevant during analysis}
     \label{fig:engineering_files}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Sensor Orientation}: 
     going back on Figure \ref{fig:stu_station1_b}, we can see how the sensor has been installed horizontally, with the $x$-axis as parallel as possible to the blade ($X$) with 
-    the help of a level. This tolerating some errors due to disturbing factors such as color, dirt and imperfections of the metal.
+    the help of a level. This tolerating some errors due to disturbing factors such as colour, dirt and imperfections of the metal.
     Furthermore, the latter is installed upside down, i.e.\ parallel to the $Z$ axis as shown in the Render \ref{fig:s1b_render}.
     \item \textbf{Installation Angle}:
     We had to take also into account that the machines have various angles to the ideal $Z$-axis, this was measured on site and varies from station to station, from 5° to 12° degrees.
@@ -219,15 +217,15 @@ This is where most of my work and time went, my first task was to perform some \
 Since the cabinet was never turned off while sending data for approximately two months, except for five days, between 13/10 and 18/10, it was clear from the start that most of 
 the signal was useless, ``flat'' stationary data with no movement e.g.\ during night hours when the servo motors were off. 
 Another big problem was that there was no distinction whatsoever between different sensor installation positions.
-To solve these and other smaller issues a preliminary data labeling step was performed directly on the visualization tool, using the Excel log file as source of 
+To solve these and other smaller issues a preliminary data labelling step was performed directly on the visualization tool, using the Excel log file as source of 
 operational data, with all the limitations involved. The task was performed in-place using the Annotation UI, dividing the measurement in smaller blocks of variable length 
 as demonstrated in Figure \ref{fig:stu_annotation}. While being tedious, it was strictly necessary, otherwise no meaningful analysis could have been performed.
 
 Let's go through the procedure together. % troppo informale?
 The idea is to isolate relevant data, in other terms data that is available, and we know what it represents keeping in mind we are interested in finding sub zones 
 where data seems to be not varying (so much): for instance we would like to exclude the acceleration and deceleration phases of servo motors.
-For each client log entry, we create an equivalent annotation entry, with the caveat that there could be more than one behavior block identified per run, so we have two unique identifiers, a Block ID and a Run ID. 
-Each block will have several variables like operation \{TEST, PROD, \dots \}, color \{\textcolor{blue}{Blue} and \textcolor{red}{Red}\}, station $\{1,2,3\}$, and so on. 
+For each client log entry, we create an equivalent annotation entry, with the caveat that there could be more than one behaviour block identified per run, so we have two unique identifiers, a Block ID and a Run ID. 
+Each block will have several variables like operation \{TEST, PROD, \dots\}, colour \{\textcolor{blue}{Blue} and \textcolor{red}{Red}\}, station $\{1,2,3\}$, and so on. 
 These variables will be our tags columns $\{n+1, n+2, n+3, \dots\, k\}$ in our final result Table C. To give an approximate order of magnitude, about 110 annotations, hence blocks, were made.
 The next step was to download the annotations, using Grafana's REST API, and to transition to a better data structure: from intermediate JSON to structured DataFrame.
 Once this metadata was in place, we could proceed with the more complex section of the analytics.
@@ -238,7 +236,7 @@ Once again our main concern was to study the amplitude of vibration. So for each
     \item returned the \ac{RMS} values for each individual axes $X,Y,Z$;
 \end{enumerate}
 Let's take a closer look at the various operations: % troppo informale?
-as far as the first one is concerned, nothing too complicated, thanks to zensor library we can easily retrieve our time series data in a shape of a pandas DataFrame.
+as far as the first one is concerned, nothing too complicated, thanks to Zennor library we can easily retrieve our time series data in a shape of a pandas DataFrame.
 For the second point, here now we do not dwell too much technical details, it was agreed to combine the two operations into one (see Equation \ref{eq:op}).
 So what we end up doing was performing dot product among vector $u$ and matrix $R_X(\phi)$, in formula: $R_X(\phi)u = u$.
 With no signs assigned to the angles, that we know from engineering files, the basic translation $+$ rotation matrix on $X$-axis $R_X(\phi)$ is:
@@ -310,7 +308,7 @@ I decided not to discuss his insights, here in this paper, as they are not the r
     \centering
     \begin{tabularx}{\textwidth}{@{}lllllllll@{}}
     \toprule
-    start & einde & actie & kant & stat & draaien & $X$ & $Y$ & $Z$ \\ \midrule
+    Start & einde & actie & kant & stat & draaien & $X$ & $Y$ & $Z$ \\ \midrule
     13:19:01 & 13:29:01 & TEST & \textcolor{blue}{B} & 1 & 1 & 131 & 176 & 592 \\ 
     13:29:01 & 13:39:00 & TEST & \textcolor{blue}{B} & 1 & 1,2 & 160 & 143 & 461 \\  
     13:38:58 & 13:49:01 & TEST & \textcolor{blue}{B} & 1 & 1,2,3\textcolor{blue}{B} & 132 & 166 & 356 \\ 
@@ -321,7 +319,7 @@ I decided not to discuss his insights, here in this paper, as they are not the r
     10:04:00 & 12:35:00 & DASTE & \textcolor{blue}{B} & 3 & 1,2,3\textcolor{blue}{B},3\textcolor{red}{R},4 & 630 & 542 & 1489 \\
     \bottomrule
     \end{tabularx}
-    \caption{Midterm result: numerical RMS \texttt{1h} values are given using engineering notation: $10^{-6}$}
+    \caption{Stumabo midterm result: numerical RMS \texttt{1h} values are given using engineering notation: $10^{-6}$}
     \label{tab:stu_midterm_res}
 \end{table}
 
@@ -334,7 +332,7 @@ seemed more prominent than in $Y$ direction, also horizontal but perpendicular t
 Before digging deeper into this, we wanted to check on our side if these axes can't have been switched somewhere.
 
 The machines (motor, stones \dots) and stones turning both causes vibrations. As discussed previously, for keeping temperatures low, cooling fluid is sometimes applied to the stones, 
-where it is absorbed. When drying especially, we noticed higher vibrations as the liquid isn't all over the stone anymore, but going to the outside gradually.
+where it is absorbed. When drying especially, we noticed higher vibrations as the liquid isn't all over the stone any more, but going to the outside gradually.
 Anyway, the turning would intuitively cause more vibrations perpendicular to their rotating axe ($Y$) and ($Z$), not along their axe ($X$), 
 but in the analysis we saw relatively higher vibrations along the blade axe ($X$) than perpendicular to it ($Y$), even though ($Z$), vertically, is still highest. 
 After successfully double-checking back-end, Lambda configuration and the \ac{PLC} programming, we couldn't confirm 100\% the cabling connection, but with a small margin of 

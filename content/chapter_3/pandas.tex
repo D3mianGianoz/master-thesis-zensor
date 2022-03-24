@@ -1,22 +1,22 @@
 \section{Pandas}\label{section:pandas}
-Pandas is a data manipulation and analysis software library created for the Python programming language. It provides data structures and functions for manipulating numerical tables and time series. It is free software distributed under the BSD three-clause license~\cite{Misc:OpenLDAP_license:oldap-2.7}.
+Pandas is a data manipulation and analysis software library created for the Python programming language. It provides data structures and functions for manipulating numerical tables and time series. It is free software distributed under the BSD three-clause licence~\cite{Misc:OpenLDAP_license:oldap-2.7}.
 The name derives from the words ``panel data'', which is an econometrics term for data sets that comprise observations for the same individuals over several time periods and, at the same time, is a parody of the term ``Python data analysis''~\cite{mckinney_data_2010}.
 
 \subsection{Series and DataFrame}
-Pandas is primarily used to analyze data. It supports data import from a variety of file formats, including comma-separated values (CSV), JSON, SQL database tables or queries, and Microsoft Excel~\cite{Misc:pandas_docs}.
+Pandas is primarily used to analyse data. It supports data import from a variety of file formats, including comma-separated values (CSV), JSON, SQL database tables or queries, and Microsoft Excel~\cite{Misc:pandas_docs}.
 Furthermore, Pandas supports a variety of data manipulation operations such as merging, reshaping, and selecting, as well as data cleaning and handling.
 To accomplish these goals, Pandas defines and makes use of two important software \textit{Classes}, Series and DataFrame, which we will now briefly introduce.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{content/chapter_3/images/datastructure.pdf}
-    \caption{Pandas Data structure}
+    \caption{DataFrame: Pandas' core data structure}
     \label{fig:pandas_dataframe}
 \end{figure}
 
-\paragraph{Series} Is a one-dimensional labeled array capable of holding any data type (integers, strings, floating point numbers, Python objects, etc.).
+\paragraph{Series} Is a one-dimensional labelled array capable of holding any data type (integers, strings, floating point numbers, Python objects, etc.).
 The axis labels are collectively referred to as the \textit{index}.
 
-\paragraph{DataFrame} Is a 2-dimensional labeled data structure with columns of potentially different types; in some ways it is similar to
+\paragraph{DataFrame} Is a 2-dimensional labelled data structure with columns of potentially different types; in some ways it is similar to
 % EB: attenzione "it's like" e` informale
 a spreadsheet or an SQL table (see Figure~\ref{fig:pandas_dataframe}) in which each individual column is a \textit{Series}.
 It is, generally, the most commonly used pandas object, since it accepts different kinds of input, which makes it very flexible~\cite{reback_pandas-dev/pandas:_2022}.
@@ -27,7 +27,7 @@ can optionally pass index (row labels) and columns (column labels) arguments. By
 % DG: ho riformulato specificando il soggetto:
 % alternativamente to secure\ to ensure per \todo{EB: ``guaranteeing the index'' non suona bene}
 If axis labels are not passed, they will be constructed from the input data based on common sense rules.
-And this is just one way of building a Dataframe, an appetizer of the flexibility of this library.
+And this is just one way of building a DataFrame, an appetizer of the flexibility of this library.
 % \todo{EB: non so se esista ``foretaste''. Io conosco ``appetizer'' in contesti simili, ma vedi tu}
 
 \subsection{Core Features}
@@ -48,10 +48,10 @@ By ``group by'' we are referring to a process involving one or more of the follo
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{content/chapter_3/images/split-apply-combine.png}
-    \caption{Shows the Split-Apply-Combine using an aggregation function (source: Analytics Vidhya~\cite{Misc:pandey_split-apply-combine})}\label{fig:pandas_groupby}
+    \caption{Shows the Split-Apply-Combine using an aggregation function (Source:~\cite{Misc:pandey_split-apply-combine})}\label{fig:pandas_groupby}
 \end{figure}
 Among these three steps, the \textit{split} is the most straightforward. In fact, in many situations, we would like to split the data set into groups and do something with those groups~\cite{reback_pandas-dev/pandas:_2022}.
-In the \textit{apply and combine} step, we might wish to do one of the following:
+In the \textit{``apply and combine''} step, we might wish to do one of the following:
 \begin{itemize}
     \item Aggregation: compute a summary statistic (or statistics) for each group, some examples:
           \begin{itemize}
@@ -109,6 +109,6 @@ Furthermore, other time series features are available, and not only that notably
     \item Label-based slicing, sophisticated indexing, and big data set sub-setting
     \item Insertion and deletion of columns in a data structure.
 \end{itemize}
-\paragraph{Conlcusion}
+\paragraph{Conclusion}
 Pandas provides a solid foundation upon which a very powerful data analysis ecosystem can be established, especially since the library is performance-optimized,
 with important code paths implemented in C and Cython\footnote{Optimistic static Python compiler capable of using highly optimized C libraries \url{https://cython.org/}}.
