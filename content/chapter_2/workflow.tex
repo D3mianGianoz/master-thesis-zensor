@@ -1,8 +1,8 @@
 \section{Workflow}\label{section:workflow}
 % \todo{EB2DG: ``last two phases'' di cosa? Conviene ricordarlo, a meno che non sia banale. Quali sono le fasi?},
 As we will see better in Chapter~\ref{chapter:use_cases} dedicated to practical use cases, where we will give more space to some technical details, 
-my internship, for reasons of limited time and domain knowledge, has focused more on the last two phases, out of the four, of zensor's product discussed previously in Section\ref{section:zensor_approach}. 
-Now, in this last section, I would like to present some peculiar elements and techniques that zensor employs for the 3rd and 4th phases: data management and analysis.
+my internship, for reasons of limited time and domain knowledge, has focused more on the last two phases, out of the four, of Zensor's product discussed previously in Section\ref{section:zensor_approach}. 
+Now, in this last section, I would like to present some peculiar elements and techniques that Zensor employs for the 3rd and 4th phases: data management and analysis.
 
 % https://www.notion.so/zensor/Scripting-Guidelines-8411d59eb62a454d8a5bea728f102bbb
 \subsubsection{Architecture}
@@ -40,7 +40,7 @@ Three submodules are available:
 \begin{itemize}
 	\item Heartbeat: send a heartbeat (a lightweight daemon to periodically check the status of your services) from a server via the OpsGenie platform indicating that server and scripts docker are functioning well and are available.
 	\item SMS: send an alert directly to list of phone numbers, with the downside that long messages will be cut off at 160 characters, but phone numbers aren't terribly format sensitive 
-	and +32 prefix (BE) is automatically added, if no country code is specified.
+	and BE prefix +32 is automatically added, if no country code is specified.
 	\item Email: This will send an E-mail through the \textcolor{orange}{AWS Simple E-mail service} where messages sent from EC2 instances are free up to 62,000 per month.
 \end{itemize}
 \paragraph{Time}
@@ -50,7 +50,7 @@ This includes two functions, designed to ease writing scripts that generate repr
 	\item first one will generate evenly spaced timestamps in a given range;
 	\item the second one, instead generated pairs of times, which are separated by the argument (time) \texttt{interval}, the ``amplitude'' of the window.
 \end{enumerate}
-The goal of a good script should be that this happens in a reliable way regardless of \textbf{when} exactly the script is run.
+The goal of a good script should be that this happens reliably regardless of \textbf{when} exactly the script is run.
 In this prospective, \textit{generate\_timewindow} can be useful e.g.\ to generate a window for the current year/month/week to date.
 
 \subsubsection{Script Structure}\label{subsection:script_structure}
