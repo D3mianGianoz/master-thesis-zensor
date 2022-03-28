@@ -1,12 +1,12 @@
 \acsetup{
     make-links          =   true,
-    link-only-first     =   true,  %If this is activated then every short or alternative appearance of an acronym will be linked to its description in the list of acronyms.
+    % link-only-first     =   true,  %If this is activated then every short or alternative appearance of an acronym will be linked to its description in the list of acronyms.
     pages / display     =   first,
     pages / fill        =   {, },
     format / first-long =   \emph,
     format / replace    =   true,
-    single              =   true,
-    single-style        =   long
+    % single              =   true,
+    % single-style        =   long
 }
 
 % Chapter 1
@@ -99,6 +99,10 @@
     short   =   {S3},
     long    =   {Simple Storage Service}
 }
+\DeclareAcronym{csv}{
+    short   =   {CSV},
+    long    =   {Comma-separated values}
+}
 
 % Chapter 3
 \DeclareAcronym{crud}{
@@ -111,6 +115,7 @@
 }
 
 % Chapter 4
+% Stumabo
 \DeclareAcronym{CtM}{
     short   =   {CtM},
     long    =   {Continuos monitoring}
@@ -123,6 +128,7 @@
     short   =   {PLC},
     long    =   {Programmable Logic Controller}
 }
+% VUB
 \DeclareAcronym{GEP}{
     short   =   {GEP},
     long    =   {Green Energy Park}
@@ -135,6 +141,10 @@
     short   =   {HV},
     long    =   {High Voltage}
 }
+\DeclareAcronym{LV}{
+    short   =   {LV},
+    long    =   {Low Voltage}
+}
 \DeclareAcronym{BHC}{
     short   =   {BHC},
     long    =   {Brussels Health Campus}
@@ -143,13 +153,11 @@
     short   =   {UZB},
     long    =   {Universitair Ziekenhuis Brussel}
 }
-
-%% Examples
-\DeclareAcronym{gps}{
-    short   =   {GPS},
-    long    =   {Global Positioning System}
+\DeclareAcronym{CHP}{
+    short   =   {CHP},
+    long    =   {Combined Heat and Power}    
 }
-\DeclareAcronym{api}{
-    short   =   {API},
-    long    =   {Application Programming Interface}
+\DeclareAcronym{SFTP}{
+    short   =   {SFTP},
+    long    =   {SSH File Transfer Protocol}
 }
