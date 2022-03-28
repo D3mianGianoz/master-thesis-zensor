@@ -50,8 +50,7 @@ technology and maximal reliability are the focus points of this demonstration si
 \end{figure}
 (Synopsis)
 In this specific project the energy (related parameters) metered at the VUB BHC (the academic hospital in Jette) will have to be stored in our database and visualized for the client. 
-They want to see some basic visualizations on it. This would need to happen 'fast'.
-It's a limited dataset, no live link or permanent ingestion will have to be set up.
+They want to see some basic visualizations of this limited dataset, no live link or permanent ingestion will have to be set up.
 All the 'items' at that point should also have a link to the manual, spec-sheet... of the component (link to Snipe-It or other database).
 The lay-out is a sort of 'ring' network with different 'nodes': the main transformers. These all have a code (C1, C3...). 
 These have 'sub' transformers connected to them and on those transformers the 'consumers' are connected (or power sources). Sometimes a huge machine, sometimes an individual room.
@@ -66,6 +65,15 @@ In a second instance they want the entry point to be a map of the campus with th
     \caption{\ac{VUB}'s remote server folder tree structure}
     \label{fig:vub_folder_tree}
 \end{figure}
+\ac{VUB} research group MOBI has collected, through the years, several data out of \ac{BHC}'s microgrid.
+This is currently stored in simple, yet effective folder tree, that tries to replicate the reality. 
+Looking at Figure \ref{fig:vub_folder_tree} from right to left will help us clarify the situation. 
+Starting from the leaves, we have our .csv files with their filename; this can be the consumer name or the sub transformer. 
+Each file has thoundans of rows with only two columns: ``time'', time-zone aware, and ``value'', with no unit.
+Here we can find up to four different physical measurement related to electricity: \{Current, Voltage, Power Factor and Energy\}.
+About the latter one, we have to make a distinction. It can either represent one individual consumer or the whole energy drawn by the sub transformer. 
+Ideally it should be the sum of all consumer connected. Instead, C, V e PF date is only available at the sub transfo level, not consumer.
+Each set of files is grouped in to a folder, that represent  
 
 \paragraph{Commissioning}
 
