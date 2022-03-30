@@ -16,7 +16,7 @@ which purpose is to develop and operate a research campus in the Research park o
 With this research campus, Green Energy Park aims to bridge the gap between research, innovation, realization and exploitation, by acting as a large-scale living lab, expertise and training centre~\cite{Misc:vub_2020_green}.
 \paragraph{Context Introduction}
 \begin{figure}[ht]
-    \includegraphics[width=\textwidth]{vub/context/campus_site_layout.pdf}
+    \fbox{\includegraphics[width=0.97\textwidth]{vub/context/campus_site_layout.pdf}}
     \caption{\acs{UZB} electricity distribution network layout}
     \label{fig:bhc_site_layout}
 \end{figure}
@@ -120,16 +120,77 @@ Finally, the \textbf{step three} involves writing each DataFrame on the InfluxDB
 This operation, which is already quite optimized, can be easily executed in parallel given the limited concurrency.
 As a result we will have a ``measurement'' for each node, which will contain several series, each one easily distinguishable from the others.
 
-\paragraph{Analysis}
+% In a second instance they want the entry point to be a map of the campus with the main transformers indicated and with a clickable link on each item such that the data can be consulted. 
+\paragraph{Analysis \& Visualization}
+\begin{figure}[ht]
+    \includegraphics[clip, trim=0 0 0.1cm 3.5cm, width=\textwidth]{vub/grafana/node_c03_transfo302_raw.pdf}
+    \caption{Transformer302 raw data dashboard}
+    \label{fig:vub_raw_rad}
+\end{figure}
+To ensure that ingestion has been carried out correctly some basic visualizations is required.
+We designed the dashboards to share the same structure, same philosophy as the distribution network.
+So each node (\ac{HV} cabin) will have it's own page, with a variable of number of panels, depending on how many sub transformer are present per node.
+Taking the NodeC03's dashboard, illustrated at Figure \ref{fig:vub_raw_rad}, as an example, with a bit of background info: 
+this station has 3 sub-transformers and gives power to the children's hospital, as we can spot references to medical wards; 
+we will focus on the second converter and its metrics as we can recognise some key elements previously discussed.
+Starting from the bottom, we find three panels covering voltage, current and power factor of Transformer 302, with a minimum 6 month temporal frame.
+As mentioned at the beginning of this segment, these measurements were added at a later stage and are in a smaller volume than the electric energy. 
+At this stage of the project, there is not a high interest in performing any analyses on these metrics, besides trend monitoring. 
+Directly above, a larger panel is showing the energy consumption of all consumers connected to the secondary transformer.
+As we discussed in section \ref{section:grafana}, \textit{Grafana} allows us to adjust the time window to our liking.
+In the time interval chosen, from July 2018 to March 2022, the signal appears to be a monotonously increasing function of time $f(t)$. 
+In fact, the measured data, at the \ac{LV} stations, are cumulative: easy to collect and store, but less interesting from an analytical point of view. 
+Following this argument, we are not surprised that, taking a random point (20 April 2021), the values recorded at that instant are of a higher order of magnitude [MWh] than expected [KWh].
+% We will resume this issue at later stages.
 \begin{figure}[ht]
     \includegraphics[width=\textwidth]{vub/flowcharts/analystic_flowchart.png}
     \caption{\ac{VUB}'s analytics chart}
     \label{fig:vub_anal_chart}
 \end{figure}
-They want to see some basic visualizations of this limited dataset, no live link or permanent ingestion will have to be set up.
-In a first instance the dashboards need to have the same structure as the folders the .csv files are in.
-So: each folder containing .csv files should be a page in Grafana displaying the graphs of the series inn the .csv's in that folder.
-In a second instance they want the entry point to be a map of the campus with the main transformers indicated and with a clickable link on each item such that the data can be consulted. 
 
+It is important to remember that one of the objectives of this project is to provide information on the energy usage of the various nodes. 
+The next step is then to calculate some consumption statistics. We now shall examine the workflow of operations necessary for achieving this goal.
+Looking at the diagram in Figure \ref{fig:vub_anal_chart}, we can observe that the first necessary step is to choose the time period $T$ that most interests us.
+Ideally, for the end user i.e.\ the vub researcher, all options will be available.
+As for the subsequent steps, they are quite simple at an abstract level.
+\begin{enumerate}
+    \item First, following the previous discussion, we calculate how much the series varies. 
+    That is, taking two successful points of the signal $x_t$ and $x_{t+1}$ we calculate $\Delta = x_{t+1} - x_t$.
+    \item Second, We use pandas split-apply-combine approach, as discussed at \ref{fig:pandas_groupby}, we group on our tags columns and then we use the library downsampling 
+    functionality for performing a frequency conversion, from 15-minutes data to the selected $T$ period.
+    \item Third, we compute the group sum, as the apply step and we get our data combined as requested.
+    \item Four, we decorate the resulting DataFrame with extra information, useful for visualization purpose, and the resulting frequency. 
+\end{enumerate}
+
+\begin{figure}[htp]
+    \begin{subfigure}{\textwidth}
+        \includegraphics[clip, trim=0 7.5cm 0 0, width=\textwidth]{vub/grafana/node_c03_consumption_stats.pdf}
+        \caption{NodeC03 consumption statistic}
+        \label{fig:vub_stats_v1}
+    \end{subfigure}
+\end{figure}
+So all that remains is to visualise this statistic in an intelligent way, so that it can provide some insights for researchers.
+We shall now take a look at two dashboard, illustrated at (\ref{fig:vub_2_dashboard}), with several panels querying the same consumption statistic.
+As mentioned in the caption, we are displaying data concerning the preceding case, i.e. the radiology department of the children's hospital.
+In detail, starting from (\subref{fig:vub_stats_v1}), on the top left we find the distribution of daily consumption, which is mainly between 20 and 80 kWh. 
+On the right we can see the proportional average consumption per day of the week, where the maximum is Tuesday and the minimum Sunday. 
+Finally, we have a status map, which gives us, at one glance, a comprehensive view of long-term average daily consumption. 
+For instance, we were able to notice that on 28th December 2022 there was a spike in consumption.
+
+Turning now to Figure (\subref{fig:vub_stats_v2}), we can see that this also has as many as 3 panels. Starting from the top left-hand corner, we have a histogram indicating the average energy consumption per day of the week, averaged over the selected period. 
+Note that the y-axis does not start from 0, but from 37.5 to highlight the present differences. On the right we find a pie chart, similar representation to that discussed for panel (\subref{fig:vub_stats_v1}).
+Finally, at the bottom we see a daily average over a longer period, i.e. a month. With peaks in June and July and lows in October. 
+\begin{figure}    
+    \ContinuedFloat
+    \begin{subfigure}{\textwidth}
+        \includegraphics[clip, trim=0 5.5cm 0 0, width=\textwidth]{vub/grafana/weekly_and_monthly_node_c3_transfo302_radio.pdf}
+        \caption{stats}
+        \label{fig:vub_stats_v2}
+    \end{subfigure}
+    \caption{Two examples of visualization dashboard of \ac{UZB} radiology's energy consumption}
+    \label{fig:vub_2_dashboard}
+\end{figure}
+As a minor distinction here we have transparent panels, as contrasting with the white background of the previously mentioned dashboard. 
+With these considerations we can consider the analysis part complete, knowing that a few aspects have been left out, in order to keep the text as relevant and clean as possible.
 
 \subsection{Conclusion}
