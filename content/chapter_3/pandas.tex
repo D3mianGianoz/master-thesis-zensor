@@ -2,10 +2,6 @@
 Pandas is a data manipulation and analysis software library created for the Python programming language. It provides data structures and functions for manipulating numerical tables and time series. It is free software distributed under the BSD three-clause licence~\cite{Misc:OpenLDAP_license:oldap-2.7}.
 The name derives from the words ``panel data'', which is an econometrics term for data sets that comprise observations for the same individuals over several time periods and, at the same time, is a parody of the term ``Python data analysis''~\cite{mckinney_data_2010}.
 
-\subsection{Series and DataFrame}
-Pandas is primarily used to analyse data. It supports data import from a variety of file formats, including comma-separated values (CSV), JSON, SQL database tables or queries, and Microsoft Excel~\cite{Misc:pandas_docs}.
-Furthermore, Pandas supports a variety of data manipulation operations such as merging, reshaping, and selecting, as well as data cleaning and handling.
-To accomplish these goals, Pandas defines and makes use of two important software \textit{Classes}, Series and DataFrame, which we will now briefly introduce.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{content/chapter_3/images/datastructure.pdf}
@@ -13,9 +9,12 @@ To accomplish these goals, Pandas defines and makes use of two important softwar
     \label{fig:pandas_dataframe}
 \end{figure}
 
+\subsection{Series and DataFrame}
+Pandas is primarily used to analyse data. It supports data import from a variety of file formats, including \ac{csv}, JSON, SQL database tables or queries, and Microsoft Excel spreadsheets~\cite{Misc:pandas_docs}.
+Furthermore, Pandas supports a variety of data manipulation operations such as merging, reshaping, and selecting, as well as data cleaning and handling.
+To accomplish these goals, Pandas defines and makes use of two important software \textit{Classes}, Series and DataFrame, which we will now briefly introduce.
 \paragraph{Series} Is a one-dimensional labelled array capable of holding any data type (integers, strings, floating point numbers, Python objects, etc.).
 The axis labels are collectively referred to as the \textit{index}.
-
 \paragraph{DataFrame} Is a 2-dimensional labelled data structure with columns of potentially different types; in some ways it is similar to
 % EB: attenzione "it's like" e` informale
 a spreadsheet or an SQL table (see Figure~\ref{fig:pandas_dataframe}) in which each individual column is a \textit{Series}.
