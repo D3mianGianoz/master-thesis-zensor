@@ -50,7 +50,7 @@ which are connected to ``consumers'' and/or power sources. The consumers can var
 
 % \todo{EB: aggiungere frasetta: ``In this section, we illustrate the company's goals'' o qualcosa del genere. Altrimenti non si capisce.}
 The project started at end of July 2020, but data was collected since the 2016/17. 
-So, knowing that considerable progress had already been made, I still had the added pleasure of contributing to the project in its advanced stages.
+So, knowing that considerable progress had already been made, I still had the pleasure of contributing to the project in its advanced stages, improving and adding extra features.
 Let's see what the project's goals are in the long and short term.
 
 \paragraph{Long term}
@@ -95,13 +95,14 @@ Starting from the leaves, we found the \texttt{\ac{csv} Files}. Each file shares
 It can either contain information about a secondary transformer or a consumer/power-source as mentioned before in Section \ref{sub:vub_initial_hp}. 
 To make such distinction we must rely on its filename, indicating the hardware source and/or the physical quantity measured.
 For example, we could find the file \texttt{Transfo-I3.csv}, referring to transformer's 3° phase current, while file \texttt{Bord LG 03 Radiologie.csv} stores energy consumption of the radiology department.
+
 In our dataset different electricity measurement are present \{current, voltage, power\-factor, energy\}; all taken using the secondary \ac{LV} terminals of the transformers.
 How are the different physical quantities organized? 
 To answer this question, we go up one level in the tree, moving to the right, stepping up to \texttt{Measurements} where we have five separated directories.
-
 About the energy (kWh): we have to make an important distinction between \textit{individual} or \textit{cumulative}. It can either represent the consumption of one individual consumer or the whole sub transformer, 
 ideally it should be the sum of all consumers connected to it.
-Instead, for the others (current, voltage e power factor) data is only available at the sub transformer level, not consumer, and in smaller quantities since it was later added to the dataset. 
+Instead, for the others (current, voltage e power factor) data is only available at the sub transformer level, not consumer, and in smaller quantities since it was later added to the dataset.
+
 Let's now change the way we traverse the tree, from bottom-up to top down i.e.\ right to left.
 From the root (\texttt{Fixed folder structure}), we go down to the \texttt{Individual Nodes} layer, which is self-explanatory. We find in fact a directory for each node of our distribution network, approximately 12. 
 This folder contains one or more sub-folder, one for each sub-transformer connected to the same node. Going down even further to the \texttt{Sub transformer} level, same logic applies. Each sub transformer has its own metrics folders.
@@ -145,7 +146,8 @@ As a result, we will have a \textit{``measurement''} for each node, which will c
 \end{figure}
 To ensure that ingestion has been carried out correctly some basic visualizations is required.
 Therefore, we designed the dashboards to share the same structure, same philosophy as the distribution network.
-So, each node (\ac{HV} cabin) will have its own page, with a variable number of panels, depending on how many sub-transformers are present per node.
+So, each node (\ac{HV} cabin) will have its own page, with a variable number of panels, depending on how many sub-transformers are present. %per node
+
 Taking the Node C3 dashboard as an example, illustrated in Figure \ref{fig:vub_raw_rad}, enhanced with a bit of contextual information: 
 the station gives power to the children's hospital, as we can spot references to medical wards in the legend, and has three sub-transformers.
 In particular we will focus on the second one and its metrics, where we can recognise some key elements previously discussed.
@@ -159,15 +161,16 @@ In fact, corresponding data, measured at the \ac{LV} stations, is cumulative: ea
 Following this argument, we should not be surprised that, taking a random point (20 April 2021), the different energy consumption values recorded at that instant 
 are of a higher order of magnitude [MWh] than expected [KWh].
 % We will resume this issue at later stages.
+
+One of the objectives of this project is to provide information on the energy intake of the various nodes, making more effective use of these data. 
+The next step is then to calculate appropriate usage statistics, also to answer common questions such as: \textit{what is the average consumption of transformer $x$?}
+We now shall examine the workflow of operations necessary for achieving this goal.
+
 \begin{figure}[ht]
     \includegraphics[width=\textwidth]{vub/flowcharts/analystic_flowchart.png}
     \caption{\ac{VUB}'s analytics chart}
     \label{fig:vub_anal_chart}
 \end{figure}
-
-One of the objectives of this project is to provide information on the energy intake of the various nodes, making more effective use of these data. 
-The next step is then to calculate appropriate usage statistics, also to answer common questions such as: what is the average consumption of transformer $x$?
-We now shall examine the workflow of operations necessary for achieving this goal.
 Looking at the diagram in Figure \ref{fig:vub_anal_chart}, we can observe that the first necessary step is to choose a time period $T$, daily to yearly.
 Ideally, for the end user i.e.\ the VUB researcher, all options will be available, but certainly the daily $T$ is highly informative.
 As for the subsequent steps, they are quite intuitive at an abstract level.
@@ -183,12 +186,13 @@ As for the subsequent steps, they are quite intuitive at an abstract level.
 So, all that remains is to visualise the \textit{periodic consumption} statistic in an intelligent way, providing some insights for researchers.
 We shall now take a look at two dashboards, illustrated in Figure \ref{fig:vub_2_dashboard}, with several panels using a range of visualisation techniques, but querying the same statistic.
 As mentioned in the figure's caption, we are displaying data concerning the preceding case, i.e. the radiology department of the children's hospital.
+
 In detail, starting from dashboard (\subref{fig:vub_stats_v1}), we find, on the top left corner, a panel representing the daily consumption distribution, which is mainly between 20 and 80 kWh. 
 On the right side we can see, instead, a pie chart about the proportional average intake per day of the week, where the maximum is Tuesday and the minimum Sunday. 
 Finally, at the bottom, we have a status map which gives us, at one glance, a comprehensive view of long-term average daily consumption. 
-For instance, we were able to notice that on 28th December 2022 there was a spike in usage, with a value of 235 kWh.
+For instance, we were able to notice that on the \textit{28/12/2022} there was a spike in usage, with a value of 235 kWh.
 
-Turning now to Figure (\subref{fig:vub_stats_v2}), we can see that it consists of 3 panels. Starting again from the top left-hand corner, 
+Turning now to Figure (\subref{fig:vub_stats_v2}), we can see that it consists of three panels. Starting again from the top left-hand corner, 
 we have a bar plot, indicating the average energy consumption per day of the week. % averaged over the selected period. 
 Note that the y-axis does not start from 0, but from 37.5 to highlight the present differences. 
 On the right, we find once again a pie chart, similar representation to that discussed for panel (\subref{fig:vub_stats_v1}).

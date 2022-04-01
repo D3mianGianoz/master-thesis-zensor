@@ -70,8 +70,8 @@ In this prospective, \textit{generate\_timewindow} can be useful e.g.\ to genera
 
 Most scripts that run on the Zensor platform have a very common structure~\ref{tik:analysis_script}, so for a given time window, they:
 \begin{enumerate}
-	\item Load batch of data (either raw or from InfluxDB).
-	\item Process it in some (clever!) way, e.g.\ computing a derived metric.
+	\item Load batch of data, either raw, like \acs{csv} files, or from InfluxDB.
+	\item Process it in some clever way, e.g.\ computing a derived metric.
 	\item Write the results out to InfluxDB, to be shown in a dashboard.
 \end{enumerate}
 What time window they operate on will depend on what the task is, but also on whether the script is being invoked automatically by cron, a job scheduler on Unix-like OS, or manually.
