@@ -34,7 +34,7 @@ The goal
 % idea
 of this subsection is to give an outline of how many possible use-cases are covered by this library, and, at the same time, to explore a couple of them that proved to be crucial during my internship experience.
 % \todo{EB: ``Let's start'' \`e troppo informale. Meglio qualcosa come ``We are now first  illustrate ...''}
-We are now first illustrate the concept of \textit{grouping}.
+We are now first illustrating the concept of \textit{grouping}.
 
 \paragraph{Groupby}
 The name \textbf{GroupBy} should be quite familiar to those who have used a SQL-based tool or worked with relation database. This ``engine'' allows split-apply-combine operations on heterogeneous data sets.
@@ -70,7 +70,7 @@ In the \textit{``apply and combine''} step, we might wish to do one of the follo
     \item Some combination of the above: \textbf{GroupBy} will examine the results of the \textit{apply} step and try to return a sensibly \textit{combined} result if it doesn't fit into either of the above two categories.
 %          \todo{EB: non capisco ``sensibly'' next, DG: ho scritto la traduzione, spero sia più chiaro, se no riformulo}
 \end{itemize}
-Since the set of object instance methods on pandas data structures are generally rich and expressive, we often simply want to invoke, say, a DataFrame function on each group.
+Since the set of object instance methods on Pandas data structures are generally rich and expressive, we often simply want to invoke, say, a DataFrame function on each group.
 With this engine you can try multiple different approaches, testing what suits more your needs, even though often it is hard to define these three separate steps for badly shaped data.
 
 \paragraph{Time series resampling}
@@ -79,7 +79,7 @@ it has consolidated numerous features from other Python libraries (like \textbf{
 As an example, Pandas supports:
 \begin{itemize}
     \item Parsing time series information from various sources and formats
-    \item Manipulating and converting date times with timezone information
+    \item Manipulating and converting date times with time zone information
     \item Moving window statistics and linear regressions
 \end{itemize}
 \begin{figure}[ht]
@@ -98,7 +98,7 @@ this method can be used directly from \textit{DataFrameGroupBy} objects that we 
 % \todo{EB: attenzione, i paragrafi non possono essere riferiti. Infatti, la label viene espansa con il numero della sezioine. Considerare se inserire ``il paragrafo XYZ in SectionXYZ''}
 The resample function is very flexible and allows you to specify many parameters to control the frequency conversion and resampling operation, both up sampling and down sampling.
 %%%
-\paragraph{Others functionality}
+\paragraph{Other functionality}
 Furthermore, other time series features are available, and not only that notably:
 \begin{itemize}
     \item Date range generation and frequency conversions
