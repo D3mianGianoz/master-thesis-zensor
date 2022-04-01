@@ -12,25 +12,25 @@ Now, in this last section, I would like to present some peculiar elements and te
     \caption{Zensor's system architecture for data analytics}
     \label{fig:zensor_sys_architecture}
 \end{figure}
-Making the assumption that the first two steps have gone well, we make a simplified scenario: the sensors of project \textit{22001\_XXX} have been properly installed and wired to the \acs{IPCs}, programmed by the engineering team to collect data and aggregate it into files. 
+Assuming that the first two steps have gone well, we make a simplified scenario: the sensors of project \textit{22001\_XXX} have been properly installed and wired to the \acs{IPCs}, programmed by the engineering team to collect data and aggregate it into files. 
 We could say that the ``pump'' from the data lake\footnote{Type of data repository that stores large and varied sets of raw data in its native format: \url{https://www.redhat.com/en/topics/data-storage/what-is-a-data-lake}} is up and running, but now the ``pipelines'' 
-need to be built. As interesting a discussion as this is, this is likely to get off-topic. To stay at a shallow level let's take a look at Figure~\ref{fig:zensor_sys_architecture}; it shows us that:
+need to be built. As interesting a discussion as this is, this is likely to get off-topic. To stay at a shallow level let's look at Figure~\ref{fig:zensor_sys_architecture}; it shows us that:
 \begin{itemize}
 	\item The possible data sources, including our sensor data, are various, not to mention the formats or what protocols are used for managing transfer. 
 	\item All ``roads'' lead to \textcolor{orange}{\ac{AWS}}, ensuring that each client will then have its own separate and independent cloud \textcolor{orange}{EC2}\footnote{Amazon Elastic Compute Cloud allows users to rent virtual computers on which to run their own computer applications.} 
 	virtual machine, with its own domain.
 		Once data reach this destination a sequence of operation may happen:\begin{enumerate}
-		\item raw data gets cleaned, time synced and ingested in \textcolor{orange}{\ac{S3}}\footnote{AWS's Object-Storage service: it is not a file system, instead, is a 'Key-Value' store.} as backup system;
-		\item most of the continuous analysis, also designed and implemented by Zensor R\&D, is performed;
+		\item raw data gets cleaned, time synced and ingested in \textcolor{orange}{\ac{S3}}\footnote{AWS's Object-Storage service: it is not a file system, instead, is a 'Key-Value' store.} as backup system
+		\item most of the continuous analysis, also designed and implemented by Zensor R\&D, is performed
 		\item multiple services are running, like database and web dashboard instances, see InfluxDB \ref{section:influxdb} and Grafana \ref{section:grafana} respectively.
 	\end{enumerate} 
-	\item From there some advanced feature are deployed: for instance an alarming system, with SMS and email notification, 
+	\item From there some advanced features are deployed: for instance an alarming system, with SMS and email notification, 
 		or PDF reporting tool for ``freezing'' in time some of the most interesting dashboard panel with custom-made extra insights. %On top on this
 \end{itemize}
 
 % https://www.notion.so/zensor/Zensor-library-90259840e02349a7adc5cb2a48abf994
 \subsubsection{Zensor Library}
-Zensor library is an in-house developed Python package, containing functionality which is generic and useful to a number of projects. At present, the library contains the following main modules: 
+Zensor library is an in-house developed Python package, containing functionality which is generic and useful to several projects. At present, the library contains the following main modules: 
 clients, alerts and time.
 \paragraph{Clients}
 Influx client: easy interface to InfluxDB, built with the aid of Pandas~\ref{section:pandas}, for read/write operations from/to the database and for database management operations, like showing list of measurements or dropping a measurement.
@@ -47,8 +47,8 @@ Three submodules are available:
 % \todo{EB2DG: controllare Inglese ``The contains''}
 This includes two functions, designed to ease writing scripts that generate reproducible time ranges, ensuring that analysis is always aligned on the correct time window:
 \begin{enumerate}
-	\item first one will generate evenly spaced timestamps in a given range;
-	\item the second one, instead generated pairs of times, which are separated by the argument (time) \texttt{interval}, the ``amplitude'' of the window.
+	\item[A] First one will generate evenly spaced timestamps in a given range.
+	\item[B] The second one, instead generated pairs of times, which are separated by the argument (time) \texttt{interval}, the ``amplitude'' of the window.
 \end{enumerate}
 The goal of a good script should be that this happens reliably regardless of \textbf{when} exactly the script is run.
 In this prospective, \textit{generate\_timewindow} can be useful e.g.\ to generate a window for the current year/month/week to date.

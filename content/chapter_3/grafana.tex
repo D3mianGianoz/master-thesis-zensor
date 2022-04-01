@@ -39,15 +39,15 @@ The collecting data, which is presented in a variety of diagrams and graphs, all
 Now that we are familiar with the ``dashboard'' concept, we can highlight why we should use Grafana solution~\ref{fig:grafana_dashboard};
 here are some of the key features~\cite{Article:comprehensive_study_grafana}:
 \begin{itemize}
-    \item \textbf{Visualize} fast and flexible visualization with a variety of options allows data to be displayed the way the user wants it;
+    \item \textbf{Visualize} fast and flexible visualization with a variety of options allows data to be displayed the way the user wants it.
     \item \textbf{Dynamic Dashboard} dynamic and reusable dashboards may be created using template variables.
     \item \textbf{Explore Metric} ad-hoc queries and dynamic drill-down permits for data discovery.
-          View splits and side-by-side comparisons of different time ranges and data sources is easily achievable;
-    \item \textbf{Explore Logs} fast switch from metrics to logs preserving label filters. Furthermore, searching the logs is rather quick and can be performed on live streams;
-    \item \textbf{Alerting} most of the vital/operational metrics may be alerted visually and different types of notifications (SMS, mail, Slack) may be despatched with the aid of Grafana;
-    \item \textbf{Mixed Data Source} the same chart can have different data source: these can be selected based on queries, with built-in support for most of the prominent data sources available in the market as well as custom ones;
+          View splits and side-by-side comparisons of different time ranges and data sources is easily achievable.
+    \item \textbf{Explore Logs} fast switch from metrics to logs preserving label filters. Furthermore, searching the logs is rather quick and can be performed on live streams.
+    \item \textbf{Alerting} most of the vital/operational metrics may be alerted visually and different types of notifications (SMS, mail, Slack) may be despatched with the aid of Grafana.
+    \item \textbf{Mixed Data Source} the same chart can have different data source: these can be selected based on queries, with built-in support for most of the prominent data sources available in the market as well as custom ones.
     \item \textbf{Annotations} graphs may have events that can be annotated, two solutions are possible:
-          use native annotation store, with the ability to add annotation events directly from the graph panel or via the HTTP API, or querying other data sources.
+          use native annotation store, with the ability to add annotation events directly from the graph panel or via the HTTP API or querying other data sources.
           Event metadata and tags can be seen when hovering over events.
 \end{itemize}
 \paragraph{Time ranges}
@@ -74,7 +74,7 @@ with the support for following time units: s (seconds), m (minutes), h (hours), 
 \end{table}
 The minus ($-$) operator allows you to step back in time, relative to $now$ and if the user wish to display the full period of the unit (day, week, month, etc…),
 append /<time unit> to the end. It is also possible to view fiscal periods, using fQ (fiscal quarter) and fy (fiscal year) time units.
-The plus ($+$) operator, instead, allows you to step forward in time relative to $now$. For example one might use this feature to look at predicted data in the future.
+The plus ($+$) operator, instead, allows you to step forward in time relative to $now$. For example, one might use this feature to look at predicted data in the future.
 Here [\ref{table:time_picker}] you can see some relative ranges samples.
 
 % \todo{EB: da qualche parte parlerei del massimo refresh rate sostenibile (se ha senso)}
@@ -85,11 +85,11 @@ it will restrict users to set the refresh interval of a dashboard lower than giv
 % \texttt{And how to keep it fast}
 Loading speed of a Grafana dashboard depends on 5 major things:
 \begin{enumerate}
-    \item  pre-selected and saved time window: the larger the queried time period, the longer it takes to open and display the contents;
-    \item  data frequency in the panels: in case of the very high frequency, non aggregated data, even if selected time period is minutes, it will take time to load;
-    \item  the number of panels with the data inside;
-    \item  your database structure;
-    \item  whether calculations have to happen inside the panel before the data is displayed.
+    \item  pre-selected and saved time window: the larger the queried time period, the longer it takes to open and display the contents.
+    \item  Data frequency in the panels: in case of the very high frequency, non-aggregated data, even if selected time period is minutes, it will take time to load.
+    \item  The number of panels with the data inside.
+    \item  Your database structure.
+    \item  Whether calculations must happen inside the panel before the data is displayed.
 \end{enumerate}
 
 \paragraph{Conclusion}

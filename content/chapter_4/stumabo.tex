@@ -38,10 +38,10 @@ and it is known in the industry for their progressive industrial potato cutting 
 Stumabo also uses their knowledge to integrate the best blade in the FAM industrial mechanical cutters~\cite{Misc:stumabo_en_website}.
 
 \subsection{Goal(s), purpose \& critical factors}
-The project started in conjunction with the beginning of the internship (Oct-Nov 2021), and I had the pleasure of contributing in its early stages.
+The project started in conjunction with the beginning of the internship (Oct-Nov 2021), and I had the pleasure of contributing to its early stages.
 The main objective was to produce an \textit{ad-hoc}\footnote{It is usually produced only once, is more visual than a static report and, once completed, is shared with a smaller audience.} 
 analysis report, that could answer specific business questions.
-Unfortunately my practice ended before the second, more substantial monitoring phase of the project began, scheduled to be April 2022.
+Unfortunately, my practice ended before the second, more substantial monitoring phase of the project began, scheduled to be April 2022.
 Let's see what the goals are in the long and short term and then exploring the latter.
 \paragraph{Long term: project lifecycle}
 \begin{itemize}
@@ -119,7 +119,7 @@ As it can be  seen, despite being in Flemish, it has several tags but with one b
 \end{table}
 
 \paragraph{Installation} We must therefore clarify, before we go any further, the industrial setup: in our aid, come the engineering schematics showed in figure \ref{fig:engineering_files};
-it consists in three subfigures: the first one (\subref{fig:top_view_line}) represents the same production line we saw earlier at \ref{fig:line_overview}, just from another prospective. 
+it consists in three sub-figures: the first one (\subref{fig:top_view_line}) represents the same production line we saw earlier at \ref{fig:line_overview}, just from another prospective. 
 This view from above makes it easier for us to identify some important elements, e.g.\ how many stones are present for each station.
 It is essential to clarify a simple convention: within Stumabo the right side of the line is referred to as \textcolor{red}{red}, \textit{rood} in Flemish, and, in the same way, 
 the left side will be referred to as \textcolor{blue}{blue}, \textit{blauw}. 
@@ -137,12 +137,12 @@ ${S_{1}\textcolor{red}{R}\&\textcolor{blue}{B}, S_{2}\textcolor{red}{R}\&\textco
 
 It follows that \textbf{two} different \textbf{reference systems} are present:
 \begin{itemize}\label{item:double_system}
-    \item local $(x,y,z)$ for each sensor placement;
+    \item local $(x,y,z)$ for each sensor placement
     \item global $(X,Y,Z)$ for the entire production line.
 \end{itemize}
-We can see some refences of this important aspect in the mentioned figures alongside. % here on the side 
-This dual model well abstracts the reality, but does not allow a comparison between the various stations, which instead we would like to carry out to achieve the initial goals.
-So it will be necessary to transform everything in global coordinates, taking into account two additional factors:
+We can see some references of this important aspect in the mentioned figures alongside. % here on the side 
+This dual model well abstracts the reality but does not allow a comparison between the various stations, which instead we would like to carry out to achieve the initial goals.
+So, it will be necessary to transform everything in global coordinates, considering two additional factors:
  \textit{sensor orientation} and 
  \textit{installation angle}. 
 \begin{figure}[!htp]
@@ -170,7 +170,7 @@ So it will be necessary to transform everything in global coordinates, taking in
     \item \textbf{Sensor Orientation}: 
     going back on Figure \ref{fig:stu_station1_b}, we can see how the sensor has been installed horizontally, with the $x$-axis as parallel as possible to the blade ($X$) with 
     the help of a level. \todo{EB: check English: ``tolerates''? DG: esiste ed è usato}
-    This tolerating some errors due to disturbing factors such as colour, dirt and imperfections of the metal.
+    This tolerating some errors due to disturbing factors such as colour, dirt, and imperfections of the metal.
     Furthermore, the latter is installed upside down, i.e.\ parallel to the $Z$ axis as shown in the Render \ref{fig:s1b_render}.
     \item \textbf{Installation Angle}:
     We had to take also into account that the machines have various angles to the ideal $Z$-axis, this was measured on site and varies from station to station, from 5° to 12° degrees.
@@ -248,17 +248,17 @@ as demonstrated in Figure \ref{fig:stu_annotation}. While being tedious, it was 
 % \todo{DG: non saprei come sostiturlo, quindi rimuovo}
 
 The idea is to isolate relevant data, in other terms data that is available, and we know what it represents keeping in mind we are interested in finding sub zones 
-where data seems to be not varying (so much): for instance we would like to exclude the acceleration and deceleration phases of servo motors.
+where data seems to be not varying (so much): for instance, we would like to exclude the acceleration and deceleration phases of servo motors.
 For each client log entry, we create an equivalent annotation entry, with the caveat that there could be more than one behaviour block identified per run, so we have two unique identifiers, a Block ID and a Run ID. 
 Each block will have several variables like operation \{TEST, PROD, \dots\}, colour \{\textcolor{blue}{Blue} and \textcolor{red}{Red}\}, station $\{1,2,3\}$, and so on. 
-These variables will be our tags columns $\{n+1, n+2, n+3, \dots\, k\}$ in our final result Table C. To give an approximate order of magnitude, about 110 annotations, hence blocks, were made.
+These variables will be our tags columns $\{n+1, n+2, n+3, \dots\, k\}$ in our resulting Table C. To give an approximate order of magnitude, about 110 annotations, hence blocks, were made.
 The next step was to download the annotations, using Grafana's REST API, and to transition to a better data structure: from intermediate JSON to structured DataFrame.
 Once this metadata was in place, we could proceed with the more complex section of the analytics.
-Once again our main concern was to study the amplitude of vibration. So for each \emph{annotated block} we: 
+Once again, our main concern was to study the amplitude of vibration. So, for each \emph{annotated block} we: 
 \begin{enumerate}
-    \item retrieved ACC data through iterative queries to InfluxDB, using start and end time;
-    \item manipulated it, using vector calculus, for performing rotation and translation operations;
-    \item returned the \ac{RMS} values for each individual axes $X,Y,Z$;
+    \item retrieved ACC data through iterative queries to InfluxDB, using start and end time
+    \item manipulated it, using vector calculus, for performing rotation and translation operations
+    \item returned the \ac{RMS} values for each individual axes $X,Y,Z$.
 \end{enumerate}
 We are now going to take a closer look at the various operations: % troppo informale? EB: si DG:meglio?
 as far as the first one is concerned, nothing too complicated, thanks to Zensor library we can easily retrieve our time series data in a shape of a pandas DataFrame.
@@ -292,7 +292,7 @@ With no signs assigned to the angles, that we know from engineering files, the b
 Lastly for the third step is important to point out that, for each direction, before the RMS is calculated, the average of the time-block is determined. 
 This average will be subtracted from the array values, as to only monitor the RMS of the relative acceleration.
 
-These three operation were combined in one python function and used alongside Pandas internals. So the methodology was firstly ``called'' on \texttt{1Hz} data for testing the procedure, that took approximately $15$ minutes of CPU time, 
+These three operations were combined in one python function and used alongside Pandas internals. So, the methodology was firstly ``called'' on \texttt{1Hz} data for testing the procedure, that took approximately $15$ minutes of CPU time, 
 and then on the higher frequency data, \texttt{60Hz} where instead took more than $4$ hours. At Figure \ref{fig:stu_3_rms} we observe three plots.
 For all of them we have common elements. The x-axis label is our block identifier (Block ID), while on the y-axis represent the overall RMS value of the block itself. 
 It is quite evident how the two graphs represent similar signals but of different order of magnitude. In case \ref{sub@fig:stu_1Hz_rms} we have a $[min, max]$ range of $[0,20] * 10^{-4}$ 
@@ -320,7 +320,7 @@ as we would expect, by his design with two engines closer to each other.
     \label{fig:stu_3_rms}
 \end{figure}
 
-After all of these operations, we combined \texttt{1Hz} numerical values to the previously prepared metadata to achieve an interesting intermediate result that has approximately this aspect. 
+After all these operations, we combined \texttt{1Hz} numerical values to the previously prepared metadata to achieve an interesting intermediate result that has approximately this aspect. 
 % \todo{EB: ``intermediate'' ==> ``intermediate''?}
 Run ID and Block ID were removed here for relevance purposes (see Table \ref{tab:stu_intermediate_res}).  
 These results were then discussed and checked with a more experienced colleague, who had more domain knowledge. 
@@ -350,14 +350,14 @@ I decided not to discuss his insights, here in this report, as they are not the 
 \end{table}
 
 \subsection{Conclusion}
-Stumabo ad-hoc analysis showed, overall, insightful findings. For instance station 1 \textcolor{blue}{blue} has higher vibration than it should, 
+Stumabo ad-hoc analysis showed, overall, insightful findings. For instance, station 1 \textcolor{blue}{blue} has higher vibration than it should, 
 and it will be further investigated with spectral analysis for better identify the root cause.
 There was a less intuitive result though: vibration amplitudes (RMS) in $X$ direction, along the blade going through the grinding stone stations,
 seemed more prominent than in $Y$ direction, also horizontal but perpendicular to the blade direction.
 Before digging deeper into this, we wanted to check on our side if these axes can't have been switched somewhere.
 
 The machines (motor, stones \dots) and stones turning both causes vibrations. As discussed previously, for keeping temperatures low, cooling fluid is sometimes applied to the stones, 
-where it is absorbed. When drying, we noticed higher vibrations as the liquid isn't all over the stone any more, but going to the outside gradually.
+where it is absorbed. When drying, we noticed higher vibrations as the liquid isn't all over the stone anymore but going to the outside gradually.
 Anyway, the turning would intuitively cause more vibrations perpendicular to their rotating axe ($Y$) and ($Z$), not along their axe ($X$), 
 but in the analysis we saw relatively higher vibrations along the blade axe ($X$) than perpendicular to it ($Y$), even though ($Z$), vertically, is still highest. 
 After successfully double-checking back-end, Lambda configuration and the \ac{PLC} programming, we couldn't confirm 100\% the cabling connection, but with a small margin of 
