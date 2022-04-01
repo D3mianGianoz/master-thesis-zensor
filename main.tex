@@ -1,11 +1,11 @@
-\documentclass[a4paper, 11pt, twoside, openright]{report}
+\documentclass[a4paper, 11pt, oneside, openright]{report}
 % Package imports
 \input{imports.tex}
 
 % Document details
-\title{Thesis Draft}
+\title{Master Thesis}
 \author{Damiano Gianotti}
-\date{February 2021}
+\date{Aprile 2021}
 
 % acro package configuration and acronym definitions
 \input{acro.tex}
@@ -20,19 +20,27 @@
     \selectlanguage{english}
     % Front Matter
     \pagenumbering{roman}
-    % \input{./content/front_matter/frontispiece.tex}
-    % \input{./content/front_matter/declaration_of_originality.tex}
-    % \input{./content/front_matter/abstract.tex}
+    \input{./content/front_matter/frontispiece.tex}
+    \input{./content/front_matter/declaration_of_originality.tex}
+    \input{./content/front_matter/abstract.tex}
     \tableofcontents
+    \clearpage
+    \listoffigures
+    \clearpage
+    \listoftables
     \cleardoublepage{}
-    \pagenumbering{arabic}
-    
+
     % Main Matter
+    % \pagestyle{fancy}
+    % \headheight is too small (12.0pt): 
+    % \setlength{\headheight}{13.6pt}
+
+    \pagenumbering{arabic}
     \input{./content/chapter_1/main.tex}
     \input{./content/chapter_2/main.tex}
     \input{./content/chapter_3/main.tex}
     \input{./content/chapter_4/main.tex}
-    % \input{./content/chapter_5/main.tex}
+    \input{./content/chapter_5/main.tex}
     
     % Back Matter
     \input{./content/back_matter/appendices/main.tex}

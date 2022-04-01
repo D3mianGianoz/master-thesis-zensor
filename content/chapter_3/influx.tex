@@ -6,7 +6,7 @@ Ocean tidal heights, sunspot counts, and the Dow Jones Industrial Average's dail
 \begin{figure}[ht]
     \centering
     \includegraphics[width=.9\textwidth]{content/chapter_3/images/random-data-plus-trend-r2.png}
-    \caption{Random data plus trend, with best-fit line and different smoothing applied. (source: Wikimedia Commons~\cite{file:random-data-plus-trend-r2})}
+    \caption{Random data plus trend, with best-fit line and different smoothing applied. (Source: Wikimedia Commons~\cite{file:random-data-plus-trend-r2})}
     \label{fig:random time-series}
 \end{figure}
 \subsection{TSDB: time series database}
@@ -18,7 +18,7 @@ Timescale, popular \ac{tsdb}, CEO \textit{Ajay Kulkarni}~\cite{Misc:asay_why_tim
     This practice of recording each and every change to the system as a new, different row is what makes time-series data so powerful.
     It allows us to measure change: analyse how something changed in the past, monitor how something is changing in the present, predict how it may change in the future.
 
-    So here's how I like to define time-series data: data that collectively represents how a system/process/behaviour changes over time.
+    So, here's how I like to define time-series data: data that collectively represents how a system/process/behaviour changes over time.
 \end{quote}
 Although it is possible to store time-series data in many diverse database types, the design of these systems with \textbf{time} as a \textbf{key} index is distinctly different from relational databases, which reduces discrete relationships through referential models.
 In many cases, the repositories of time-series data will utilize compression algorithms to manage the data efficiently~\cite{Book:devops_cookbook}. Furthermore, time series databases can also be configured to regularly delete old data, unlike traditional databases which are designed to store data indefinitely.

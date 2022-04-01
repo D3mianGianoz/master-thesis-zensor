@@ -1,23 +1,49 @@
 \selectlanguage{italian}
 \begin{center}
+    \Large
+    \textbf{Analisi dati multi-parametrica a distanza e continua}
+        
+    \vspace{0.4cm}
+    \large
+    Applicata a beni, industrie e infrastrutture
+        
+    \vspace{0.4cm}
+    \textbf{Damiano Gianotti}
+       
+    \vspace{0.9cm}
     \textbf{Sommario}
 \end{center}
 Nella prassi standard di oggi, la manutenzione dei mezzi ed infrastrutture è stabilita unicamente dalla conoscenza di un certo numero di individui esperti accoppiata a fogli di dati tecnici.
-La qualità del prodotto diventa un problema solo quando i clienti iniziano a lamentarsi. Le riparazioni vengono effettuate quando è già troppo tardi. Tutto questo mette una pressione fortissima sulle persone responsabili delle filiere di produzione. I rapidi sviluppi nella tecnologia dei sensori, l'intelligenza artificiale e l'IoT hanno reso la manutenzione predittiva più economica e facile da implementare. Queste tecnologie permettono un modo migliore per convalidare la salute effettiva degli asset cruciali. Ciò si ottiene monitorando continuamente un ampio set di dati e aggiungendo una specifica configurazione di controllo multi-aspetto composta da diversi tipi di sensori che seguono il comportamento dei componenti critici e lo stato di salute generale del bene.
+La qualità del prodotto diventa un problema solo quando i clienti iniziano a lamentarsi. Le riparazioni vengono effettuate quando è già troppo tardi. Tutto questo mette una pressione fortissima sulle persone responsabili delle filiere di produzione. 
+I rapidi sviluppi nella tecnologia dei sensori, l'intelligenza artificiale e l'\acl{IoT} hanno reso la manutenzione predittiva più economica e facile da implementare. Queste tecnologie permettono un modo migliore per convalidare la salute effettiva degli asset cruciali. 
+Ciò si ottiene monitorando continuamente un ampio set di dati e aggiungendo una specifica configurazione di controllo multi-aspetto composta da diversi tipi di sensori che seguono il comportamento dei componenti critici e lo stato di salute generale del bene.
 
-Zensor, la società che ospita lo stage, concentra il suo core business sul monitoraggio e l'analisi dei dati in ambienti critici. Fornisce un servizio di manutenzione predittiva, composto da 4 blocchi distinti, e lo mette a disposizione di molti tipi di aziende in vari settori.  Questo include funzioni come: reporting, elaborazione analitica online, analisi, sviluppo di dashboard, data mining, e così via.
+Zensor, la società che ospita lo stage, concentra il suo core business sul monitoraggio e l'analisi dei dati in ambienti critici. Fornisce un servizio di manutenzione predittiva, composto da quattro blocchi distinti, e lo mette a disposizione di molti tipi di aziende in vari settori. 
+Questo include funzioni come: reporting, elaborazione analitica online, analisi, sviluppo di dashboard, data mining, e così via.
 In questo documento, riporteremo una panoramica su come realizzare un sistema di gestione delle risorse, con alcuni casi d'uso concreti, concentrandoci su due componenti del prodotto: Gestione e analisi dei dati.
 \cleardoublepage
 
 \selectlanguage{english}
 \begin{center}
+    \Large
+    \textbf{Remote and continuous, multi-parameter \\ data analysis}
+        
+    \vspace{0.4cm}
+    \large
+    Applied to assets, industries, and infrastructures
+        
+    \vspace{0.4cm}
+    \textbf{Damiano Gianotti}
+       
+    \vspace{0.9cm}
     \textbf{Abstract}
 \end{center}
+In today standard practice, the maintenance of assets is determined by the knowledge of several unique experienced individuals coupled with technical data sheets.
+Product quality only becomes an issue when customers start complaining. Repairs are made when it is already far too late. All of this puts tremendous pressure on the people responsible for the production lines. 
+Rapid developments in sensor technology, artificial intelligence and \acl{IoT} have made predictive maintenance cheaper and easier to implement. These technologies enable a better way to validate the actual health of crucial assets. 
+This is accomplished by continuously monitoring a broad data set, and by adding a specific multi-aspect setup consisting of different sensor types that follow the behaviour of critical components and the general state-of-health of the asset.
 
-In today standard practice, the maintenance of assets is determined by the knowledge of a number of unique experienced individuals coupled with technical data sheets.
-Product quality only becomes an issue when customers start complaining. Repairs are made when it is already far too late. All of this puts tremendous pressure on the people responsible for the production lines. Rapid developments in sensor technology, artificial intelligence and IoT have made predictive maintenance cheaper and easier to implement. These technologies enable a better way to validate the actual health of crucial assets. This is accomplished by monitoring continuously a broad data set, and by adding a specific multi-aspect monitoring setup consisting of different sensor types that follow the behaviour of critical components and the general state-of-health of the asset.
-
-Zensor, the company hosting the internship, focuses its core business on monitoring and analyzing data in critical environments. It provides a predictive maintenance service, consisting of 4 distinct building blocks, and makes it available to many types of businesses in various industries. This includes functions such as: reporting, online analytical processing, analytics, dashboard development, data mining, and so on.
-In this document, we will report an overview on how to realize an asset management system, with some concrete use case, focusing on two components of the product: Data management \& Analysis.
-
+Zensor, the company hosting the internship, focuses its core business on monitoring and analysing data in critical environments. It provides a predictive maintenance service, formed by four distinct building blocks, and makes it available to many types of businesses in various industries. 
+This includes functions such as: reporting, online analytical processing, analytics, dashboard development, data mining, and so on.
+In this document, we will report an overview on what an asset management system is and how to realize it, with some concrete use case, mostly focusing on two components of the product: Data management \& Analysis.
 \cleardoublepage
