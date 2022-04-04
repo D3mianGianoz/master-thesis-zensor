@@ -29,12 +29,18 @@
 
 % for header and footer
 
-% \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-% \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-% \fancyhf{}
-% \fancyhead[L,RO]{\scshape\thepage}
-% \fancyhead[LO]{\scshape\footnotesize\nouppercase{\leftmark}} 
-% \fancyhead[R]{\scshape\footnotesize\nouppercase{\leftmark}} 
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+% \fancyhf{} 
+\fancyhead{}
+\fancyhead[L]{\scshape\footnotesize\nouppercase{\leftmark}} 
+\fancyhead[R]{\scshape\footnotesize\nouppercase{\rightmark}}
+\fancyfoot{}
+\fancyfoot[C]{\scshape\thepage}
+
+% lines 
+% \renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
 
 % % Nome capitolo in basso a sinistra al posto di \chaptername \thechapter
 % \renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
@@ -44,6 +50,3 @@
 % \fancyfoot[L]{\thepage}
 % \fancyfoot[C]{\leftmark}
 % \fancyfoot[R]{Damiano Gianotti}
-
-% \renewcommand{\headrulewidth}{0.4pt}
-% \renewcommand{\footrulewidth}{0.4pt}
