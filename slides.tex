@@ -1,0 +1,38 @@
+\documentclass[UKenglish]{beamer}
+\usepackage[utf8]{inputenx} % For æ, ø, å
+\usepackage{csquotes}       % Quotation marks
+\usepackage{microtype}      % Improved typography
+\usepackage{amssymb}        % Mathematical symbols
+\usepackage{mathtools}      % Mathematical symbols
+\usepackage[absolute, overlay]{textpos} % Arbitrary placement
+\usepackage[export]{adjustbox}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+\setlength{\TPHorizModule}{\paperwidth} % Textpos units
+\setlength{\TPVertModule}{\paperheight} % Textpos units
+\usetikzlibrary{overlay-beamer-styles}  % Overlay effects for TikZ
+\usetheme{UiB}
+
+\author[N. Cognome]{Damiano Gianotti}
+\title{Titolo}
+\subtitle{Usage of the theme \texttt{UiB}}
+\date{13 aprile 2022}
+
+\begin{document}
+
+\section{Overview}
+\begin{frame}{Table of contents}
+    % Use
+    %
+    %     \begin{frame}[allowframebreaks]
+    %
+    % if the TOC does not fit one frame.
+    \tableofcontents[currentsection]
+\end{frame}
+
+\input{frames/intro.tex}
+\input{frames/example.tex}
+\input{frames/finale.tex}
+
+\end{document}
