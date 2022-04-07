@@ -254,7 +254,7 @@
                                         series = \bfseries}
 \setbeamerfont{title in final frame}   {size   = \LARGE,
                                         series = \bfseries}
-\setbeamerfont{subtitle in final frame}{  size = \Large,
+\setbeamerfont{subtitle in final frame}{size = \Large,
                                         series = \normalfont\rmfamily}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -262,37 +262,52 @@
 
 \setbeamertemplate{title page}
 {   
-    \begin{minipage}[c][0.7\paperheight]{\textwidth}
+    \begin{minipage}[c][0.69\paperheight]{\textwidth}
         \begin{center}
             \vspace*{\fill} 
-                \usebeamerfont{title}
-                \inserttitle
+            \usebeamerfont{title}
+            \inserttitle\\
+
+            \vspace{0.5cm}
+            \usebeamerfont{subtitle}
+            \insertsubtitle\\
+
+            % \centering
+            % \vspace{0.5cm}
+            % \usebeamerfont{date}
+            % \insertshortdate
+
             \vspace*{\fill}
         \end{center}
     \end{minipage}
-    
     \begin{beamercolorbox}[wd        = \paperwidth,
                            leftskip  = 1 em,
                            rightskip = 1 em]
                           {section in head/foot}
-                          
-        \begin{minipage}[c][0.3\paperheight]{\textwidth}
-            
-            \begin{minipage}[c]{0.48\textwidth}
-                \small Candidato: \\
-                \usebeamerfont{author}
-                \insertauthor \\
-                \small Relatore: \\
-                \large Prof. Enrico Bini
+        \begin{minipage}[c][0.30\paperheight]{\textwidth}
+            \begin{minipage}[c]{0.67\textwidth}
+                \begin{columns}[onlytextwidth]
+                    \begin{column}{0.43\textwidth}
+                        \small Candidato: \\
+                        \usebeamerfont{author}
+                        \insertauthor \\
+                        \small Relatore: \\
+                        \large Prof. Enrico Bini
+                    \end{column}
+                    \begin{column}{0.57\textwidth}
+                        \small Controrelatore: \\
+                        \large Prof.ssa Rosa Meo \\
+                        \small Correlatore: \\
+                        \large Prof. Yves Van Ingelgem
+                    \end{column}
+                \end{columns}
             \end{minipage}%
             \hfill%
-            \begin{minipage}[c]{0.48\textwidth}
+            \begin{minipage}[c]{0.33\textwidth}
                 \raggedleft
-                \includegraphics[scale = 0.50]{frames/logos/logo_unito_new_white.pdf}
+                \includegraphics[scale = 0.36]{frames/logos/logo_unito_new_white.pdf}
             \end{minipage}
-        
         \end{minipage}
-        
     \end{beamercolorbox}
     \vspace*{-1.3em}
 }
@@ -343,7 +358,7 @@
                 \insertshortauthor
                 \hfil
         \end{beamercolorbox}%
-        \begin{beamercolorbox}[wd = 0.34\paperwidth,
+        \begin{beamercolorbox}[wd = 0.33\paperwidth,
                                ht = 2.25ex,
                                dp = 1ex]
                               {section in head/foot}

@@ -1,4 +1,4 @@
-\documentclass[UKenglish]{beamer}
+\documentclass[UKenglish, dvipsnames]{beamer}
 \usepackage[utf8]{inputenx} % For æ, ø, å
 \usepackage{csquotes}       % Quotation marks
 \usepackage{microtype}      % Improved typography
@@ -7,17 +7,42 @@
 \usepackage[absolute, overlay]{textpos} % Arbitrary placement
 \usepackage[export]{adjustbox}
 \usepackage{tikz}
+\usepackage{acro} % for acronyms
+\usepackage{graphicx}
 \usepackage{xcolor}
+\usepackage{subcaption} % for inserting side-by-side figures inside a figure environment
+\usepackage{caption} % for better caption
+
+% Beamer theme
+\usetheme{UiB}
 
 \setlength{\TPHorizModule}{\paperwidth} % Textpos units
 \setlength{\TPVertModule}{\paperheight} % Textpos units
 \usetikzlibrary{overlay-beamer-styles}  % Overlay effects for TikZ
-\usetheme{UiB}
 
-\author[N. Cognome]{Damiano Gianotti}
-\title{Titolo}
-\subtitle{Usage of the theme \texttt{UiB}}
+\graphicspath{
+    {./frames/figures/}
+        {./content/chapter_1/images/}
+        {./content/chapter_2/images/}
+        {./content/chapter_3/images/}
+        {./content/chapter_4/images/}
+}
+
+\acsetup{
+    format / first-long =   \emph,
+    format / replace    =   true,
+    single              =   true,
+    single-style        =   long
+}
+
+% Document details
+\author[Damiano Gianotti]{Damiano Gianotti}
+\title{Remote and Continuous\\ Data Analysis}
+\subtitle{For critical assets}
 \date{13 aprile 2022}
+
+% acro package configuration and acronym definitions
+\input{acro.tex}
 
 \begin{document}
 
@@ -31,8 +56,15 @@
     \tableofcontents[currentsection]
 \end{frame}
 
-\input{frames/intro.tex}
-\input{frames/example.tex}
-\input{frames/finale.tex}
+\input{frames/1_intro.tex}
+\input{frames/2_contex.tex}
+\input{frames/3_tools.tex}
+\input{frames/4_stumabo.tex}
 
+% \input{frames/5_vub.tex}
+% \input{frames/6_conclusion.tex}
+
+\input{frames/7_end.tex}
+
+% \input{frames/example.tex}
 \end{document}
