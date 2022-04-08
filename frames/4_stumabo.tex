@@ -108,23 +108,23 @@
             \end{exampleblock}
         \end{column}
         \begin{column}{.52\textwidth}
-            \begin{figure}[ht]
-                % Mettere più grandi?
-                \begin{subfigure}{\textwidth}
-                    \centering
-                    \includegraphics[width=.625\textwidth]{stumabo/analysis/60Hz-raw-vibration.pdf}
-                    \caption{60Hz raw vibration}
-                    \label{fig:stu_60Hz_raw}
-                \end{subfigure}
-                \begin{subfigure}{\textwidth}
-                    \centering
-                    \includegraphics[width=.625\textwidth]{stumabo/analysis/1Hz-raw-vibration.pdf}
-                    \caption{1Hz raw vibration}
-                    \label{fig:stu_1Hz_raw}
-                \end{subfigure}
-            \end{figure}
+            \\
         \end{column}
     \end{columns}
+    \begin{figure}[ht]
+        \begin{subfigure}{0.495\textwidth}
+            \centering
+            \includegraphics[width=0.84\textwidth]{stumabo/analysis/60Hz-raw-vibration.pdf}
+            \caption{60Hz raw vibration}
+            \label{fig:stu_60Hz_raw}
+        \end{subfigure}
+        \begin{subfigure}{0.495\textwidth}
+            \centering
+            \includegraphics[width=0.84\textwidth]{stumabo/analysis/1Hz-raw-vibration.pdf}
+            \caption{1Hz raw vibration}
+            \label{fig:stu_1Hz_raw}
+        \end{subfigure}
+    \end{figure}
     \vspace*{\fill}
 \end{frame}
 
@@ -178,7 +178,7 @@
         %     \caption{\texttt{1Hz} and \texttt{60Hz} RMS values}
         %     \label{fig:stu_1_vs_60}
         % \end{subfigure}
-        \caption{RMS amplitude comparison between low and high frequency data}
+        \caption{RMS amplitude comparison \\between low and high frequency data}
         \label{fig:stu_3_rms}
     \end{figure}
 
@@ -196,12 +196,12 @@
         \item station two is the main source of vibration as we hoped it would be
         \item the cooling fluid, while drying, cause higher vibrations.
     \end{enumerate}
-    
+
     \begin{alertblock}{Counter-intuitive result}
         Vibration amplitudes ($RMS_{X}$), along the blade going through the grinding stone stations, seemed more
         prominent than in $Y$ direction, perpendicular to the blade direction.
     \end{alertblock}
-    
+
     The stones turning would intuitively cause
     more vibrations perpendicular ($Y, Z$) to their rotating axe, not along ($X$).\\
     After successfully double-checking the whole stack we can confirm that, indeed, $X$ and $Y$ are \structure{not} switched.
