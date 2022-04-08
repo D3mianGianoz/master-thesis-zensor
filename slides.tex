@@ -12,6 +12,7 @@
 \usepackage{xcolor}
 \usepackage{subcaption} % for inserting side-by-side figures inside a figure environment
 \usepackage{caption} % for better caption
+\usepackage{tabularx}
 
 % Beamer theme
 \usetheme{UiB}
@@ -19,6 +20,8 @@
 \setlength{\TPHorizModule}{\paperwidth} % Textpos units
 \setlength{\TPVertModule}{\paperheight} % Textpos units
 \usetikzlibrary{overlay-beamer-styles}  % Overlay effects for TikZ
+% set captions with numbers
+\setbeamertemplate{caption}[numbered]
 
 \graphicspath{
     {./frames/figures/}
@@ -29,11 +32,14 @@
 }
 
 \acsetup{
-    format / first-long =   \emph,
+    % format / first-long =   \emph,
     format / replace    =   true,
     single              =   true,
     single-style        =   long
 }
+
+% How to center a specific caption
+\captionsetup{justification=centering}
 
 % Document details
 \author[Damiano Gianotti]{Damiano Gianotti}
