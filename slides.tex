@@ -25,6 +25,7 @@
 
 \graphicspath{
     {./frames/figures/}
+    {./frames/logos/}
         {./content/chapter_1/images/}
         {./content/chapter_2/images/}
         {./content/chapter_3/images/}
@@ -52,14 +53,14 @@
 
 \begin{document}
 
-\section{Overview}
+% \section{Overview}
 \begin{frame}{Table of contents}
     % Use
     %
     %     \begin{frame}[allowframebreaks]
     %
     % if the TOC does not fit one frame.
-    \tableofcontents[currentsection]
+    \tableofcontents[] % 
 \end{frame}
 
 \input{frames/1_intro.tex}
@@ -67,7 +68,7 @@
 \input{frames/3_tools.tex}
 \input{frames/4_stumabo.tex}
 \input{frames/5_vub.tex}
-% \input{frames/6_conclusion.tex}
+\input{frames/6_conclusion.tex}
 \input{frames/7_end.tex}
 
 % \input{frames/example.tex}
