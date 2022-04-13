@@ -24,25 +24,24 @@
     \input{./content/front_matter/declaration_of_originality.tex}
     \input{./content/front_matter/abstract.tex}
     \tableofcontents
-    \clearpage
-    \listoffigures
-    \clearpage
-    \listoftables
     \cleardoublepage{}
 
     % Main Matter
-    % \pagestyle{fancy}
-    % \headheight is too small (12.0pt): 
     % \setlength{\headheight}{13.6pt}
-
+    \pagestyle{fancy}
     \pagenumbering{arabic}
     \input{./content/chapter_1/main.tex}
     \input{./content/chapter_2/main.tex}
     \input{./content/chapter_3/main.tex}
     \input{./content/chapter_4/main.tex}
     \input{./content/chapter_5/main.tex}
-    
+
     % Back Matter
     \input{./content/back_matter/appendices/main.tex}
+    \cleardoublepage{}
+    \listoffigures
+    \cleardoublepage{}
+    \listoftables
+    \pagestyle{plain}
     \printbibliography[heading=bibintoc]
 \end{document}
